@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)file:///C:/Sweetopialensshop/index.html -->
+<html lang="ms"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweetopia Lens - Maklum Balas Kanta Sentuh</title>
+    <!-- Menggunakan Tailwind CSS untuk susun atur yang responsif -->
+    <script src="file:///C:/Sweetopialensshop/Sweetopia%20Lens%20-%20Maklum%20Balas%20Kanta%20Sentuh_files/saved_resource"></script>
+    <!-- Menggunakan Google Font 'Fredoka' untuk reka bentuk bubbly & comel -->
+    <link href="file:///C:/Sweetopialensshop/Sweetopia%20Lens%20-%20Maklum%20Balas%20Kanta%20Sentuh_files/css2" rel="stylesheet">
+    
+    <style>
+        /* Gaya Am & Latar Belakang */
+        body {
+            font-family: 'Fredoka', sans-serif;
+            background-color: #FFF0F5;
+            background-image: 
+                radial-gradient(#FFD21E 15%, transparent 16%),
+                radial-gradient(#FF2A85 15%, transparent 16%);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Blob Hiasan Latar Belakang yang Besar & Berani */
+        .blob-pink {
+            position: absolute;
+            background-color: #FF2A85;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.25;
+            z-index: 0;
+        }
+        .blob-teal {
+            position: absolute;
+            background-color: #00C2B2;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.25;
+            z-index: 0;
+        }
+
+        /* Gaya Kad Maklum Balas dengan Sempadan Beralun (Scalloped Border) */
+        .scalloped-card {
+            background-color: #FFF0F6;
+            border: 6px solid #00C2B2;
+            border-radius: 40px;
+            box-shadow: 0 20px 0px rgba(0, 0, 0, 0.08), inset 0 0 20px rgba(255, 255, 255, 0.6);
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Kesan Sempadan Beralun Menggunakan SVG Mask atau pseudo-elements */
+        .scalloped-card::before {
+            content: '';
+            position: absolute;
+            top: -12px; left: -12px; right: -12px; bottom: -12px;
+            border: 6px dashed #FF2A85;
+            border-radius: 46px;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* Animasi Belon Terapung & Elemen Hiasan */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(3deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        .floating-element {
+            animation: float 4s ease-in-out infinite;
+        }
+        .floating-element-delayed {
+            animation: float 5s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        /* Gaya Input yang Comel & Bubbly */
+        .cute-input {
+            border: 3px solid #00C2B2;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            background-color: #FFFFFF;
+            padding-left: 3.5rem;
+        }
+        .cute-input:focus {
+            outline: none;
+            border-color: #FF2A85;
+            box-shadow: 0 0 12px rgba(255, 42, 133, 0.3);
+            transform: scale(1.01);
+        }
+
+        /* Butang Hantar dengan Kesan Tiga Dimensi yang Tebal */
+        .cute-btn {
+            background-color: #FF6F6F;
+            border: 4px solid #1A1A1A;
+            box-shadow: 0 8px 0px #1A1A1A;
+            transform: translateY(0px);
+            transition: all 0.15s ease;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .cute-btn:hover {
+            background-color: #FF8585;
+            transform: translateY(2px);
+            box-shadow: 0 6px 0px #1A1A1A;
+        }
+        .cute-btn:active {
+            transform: translateY(8px);
+            box-shadow: 0 0px 0px #1A1A1A;
+        }
+
+        /* Pilihan Warna Kanta */
+        .color-dot {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #1A1A1A;
+            transition: transform 0.2s;
+        }
+        .color-dot:hover {
+            transform: scale(1.2);
+        }
+        .color-dot.active {
+            transform: scale(1.3);
+            border-color: #FFD21E;
+        }
+
+        /* Gaya Modal Kejayaan */
+        .modal-overlay {
+            background-color: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(5px);
+        }
+    </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-20{bottom:-5rem}.-left-20{left:-5rem}.-right-20{right:-5rem}.-top-20{top:-5rem}.left-10{left:2.5rem}.left-2\/3{left:66.666667%}.left-4{left:1rem}.right-12{right:3rem}.top-1\/2{top:50%}.top-1\/3{top:33.333333%}.top-1\/4{top:25%}.top-5{top:1.25rem}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.hidden{display:none}.h-12{height:3rem}.h-24{height:6rem}.h-28{height:7rem}.h-44{height:11rem}.h-8{height:2rem}.h-80{height:20rem}.h-96{height:24rem}.h-full{height:100%}.min-h-\[110px\]{min-height:110px}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-24{width:6rem}.w-44{width:11rem}.w-8{width:2rem}.w-80{width:20rem}.w-96{width:24rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.max-w-sm{max-width:24rem}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-90{--tw-scale-x:.9;--tw-scale-y:.9;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}.resize-none{resize:none}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.overflow-hidden{overflow:hidden}.rounded-3xl{border-radius:1.5rem}.rounded-\[40px\]{border-radius:40px}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-\[\#00C2B2\]{--tw-border-opacity:1;border-color:rgb(0 194 178 / var(--tw-border-opacity, 1))}.border-\[\#1A1A1A\]{--tw-border-opacity:1;border-color:rgb(26 26 26 / var(--tw-border-opacity, 1))}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity, 1))}.border-pink-200{--tw-border-opacity:1;border-color:rgb(251 207 232 / var(--tw-border-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/70{background-color:rgb(255 255 255 / 0.7)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pl-14{padding-left:3.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-\[\#00C2B2\]{--tw-text-opacity:1;color:rgb(0 194 178 / var(--tw-text-opacity, 1))}.text-\[\#1A1A1A\]{--tw-text-opacity:1;color:rgb(26 26 26 / var(--tw-text-opacity, 1))}.text-\[\#FF2A85\]{--tw-text-opacity:1;color:rgb(255 42 133 / var(--tw-text-opacity, 1))}.text-\[\#FFD21E\]{--tw-text-opacity:1;color:rgb(255 210 30 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.shadow-\[0_20px_0px_rgba\(0\2c 0\2c 0\2c 0\.15\)\]{--tw-shadow:0 20px 0px rgba(0,0,0,0.15);--tw-shadow-colored:0 20px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[2px_2px_0px_rgba\(0\2c 0\2c 0\2c 1\)\]{--tw-shadow:2px 2px 0px rgba(0,0,0,1);--tw-shadow-colored:2px 2px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[4px_4px_0px_\#1A1A1A\]{--tw-shadow:4px 4px 0px #1A1A1A;--tw-shadow-colored:4px 4px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.drop-shadow-md{--tw-drop-shadow:drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:text-\[\#FF2A85\]:hover{--tw-text-opacity:1;color:rgb(255 42 133 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:flex{display:flex}.md\:p-10{padding:2.5rem}.md\:p-8{padding:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 1024px){.lg\:block{display:block}}</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-20{bottom:-5rem}.-left-20{left:-5rem}.-right-20{right:-5rem}.-top-20{top:-5rem}.left-10{left:2.5rem}.left-2\/3{left:66.666667%}.left-4{left:1rem}.right-12{right:3rem}.top-1\/2{top:50%}.top-1\/3{top:33.333333%}.top-1\/4{top:25%}.top-5{top:1.25rem}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.hidden{display:none}.h-12{height:3rem}.h-24{height:6rem}.h-28{height:7rem}.h-44{height:11rem}.h-8{height:2rem}.h-80{height:20rem}.h-96{height:24rem}.h-full{height:100%}.min-h-\[110px\]{min-height:110px}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-24{width:6rem}.w-44{width:11rem}.w-8{width:2rem}.w-80{width:20rem}.w-96{width:24rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.max-w-sm{max-width:24rem}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-90{--tw-scale-x:.9;--tw-scale-y:.9;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}.resize-none{resize:none}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.overflow-hidden{overflow:hidden}.rounded-3xl{border-radius:1.5rem}.rounded-\[40px\]{border-radius:40px}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-\[\#00C2B2\]{--tw-border-opacity:1;border-color:rgb(0 194 178 / var(--tw-border-opacity, 1))}.border-\[\#1A1A1A\]{--tw-border-opacity:1;border-color:rgb(26 26 26 / var(--tw-border-opacity, 1))}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity, 1))}.border-pink-200{--tw-border-opacity:1;border-color:rgb(251 207 232 / var(--tw-border-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/70{background-color:rgb(255 255 255 / 0.7)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pl-14{padding-left:3.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-\[\#00C2B2\]{--tw-text-opacity:1;color:rgb(0 194 178 / var(--tw-text-opacity, 1))}.text-\[\#1A1A1A\]{--tw-text-opacity:1;color:rgb(26 26 26 / var(--tw-text-opacity, 1))}.text-\[\#FF2A85\]{--tw-text-opacity:1;color:rgb(255 42 133 / var(--tw-text-opacity, 1))}.text-\[\#FFD21E\]{--tw-text-opacity:1;color:rgb(255 210 30 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.shadow-\[0_20px_0px_rgba\(0\2c 0\2c 0\2c 0\.15\)\]{--tw-shadow:0 20px 0px rgba(0,0,0,0.15);--tw-shadow-colored:0 20px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[2px_2px_0px_rgba\(0\2c 0\2c 0\2c 1\)\]{--tw-shadow:2px 2px 0px rgba(0,0,0,1);--tw-shadow-colored:2px 2px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[4px_4px_0px_\#1A1A1A\]{--tw-shadow:4px 4px 0px #1A1A1A;--tw-shadow-colored:4px 4px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.drop-shadow-md{--tw-drop-shadow:drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:text-\[\#FF2A85\]:hover{--tw-text-opacity:1;color:rgb(255 42 133 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:flex{display:flex}.md\:p-10{padding:2.5rem}.md\:p-8{padding:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 1024px){.lg\:block{display:block}}</style><style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.inset-0{inset:0px}.-bottom-20{bottom:-5rem}.-left-20{left:-5rem}.-right-20{right:-5rem}.-top-20{top:-5rem}.left-10{left:2.5rem}.left-2\/3{left:66.666667%}.left-4{left:1rem}.right-12{right:3rem}.top-1\/2{top:50%}.top-1\/3{top:33.333333%}.top-1\/4{top:25%}.top-5{top:1.25rem}.z-10{z-index:10}.z-20{z-index:20}.z-30{z-index:30}.z-50{z-index:50}.mx-4{margin-left:1rem;margin-right:1rem}.mb-12{margin-bottom:3rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-2{margin-left:0.5rem}.mt-1{margin-top:0.25rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.block{display:block}.flex{display:flex}.hidden{display:none}.h-12{height:3rem}.h-24{height:6rem}.h-28{height:7rem}.h-44{height:11rem}.h-8{height:2rem}.h-80{height:20rem}.h-96{height:24rem}.h-full{height:100%}.min-h-\[110px\]{min-height:110px}.min-h-screen{min-height:100vh}.w-16{width:4rem}.w-24{width:6rem}.w-44{width:11rem}.w-8{width:2rem}.w-80{width:20rem}.w-96{width:24rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.max-w-sm{max-width:24rem}.-translate-y-1\/2{--tw-translate-y:-50%;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-90{--tw-scale-x:.9;--tw-scale-y:.9;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.scale-100{--tw-scale-x:1;--tw-scale-y:1;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.transform{transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes bounce{0%, 100%{transform:translateY(-25%);animation-timing-function:cubic-bezier(0.8,0,1,1)}50%{transform:none;animation-timing-function:cubic-bezier(0,0,0.2,1)}}.animate-bounce{animation:bounce 1s infinite}.resize-none{resize:none}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-2{gap:0.5rem}.gap-3{gap:0.75rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.overflow-hidden{overflow:hidden}.rounded-3xl{border-radius:1.5rem}.rounded-\[40px\]{border-radius:40px}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-2{border-width:2px}.border-4{border-width:4px}.border-\[\#00C2B2\]{--tw-border-opacity:1;border-color:rgb(0 194 178 / var(--tw-border-opacity, 1))}.border-\[\#1A1A1A\]{--tw-border-opacity:1;border-color:rgb(26 26 26 / var(--tw-border-opacity, 1))}.border-black{--tw-border-opacity:1;border-color:rgb(0 0 0 / var(--tw-border-opacity, 1))}.border-pink-200{--tw-border-opacity:1;border-color:rgb(251 207 232 / var(--tw-border-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/70{background-color:rgb(255 255 255 / 0.7)}.bg-white\/80{background-color:rgb(255 255 255 / 0.8)}.bg-white\/90{background-color:rgb(255 255 255 / 0.9)}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pl-14{padding-left:3.5rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-6xl{font-size:3.75rem;line-height:1}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-extrabold{font-weight:800}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.tracking-widest{letter-spacing:0.1em}.text-\[\#00C2B2\]{--tw-text-opacity:1;color:rgb(0 194 178 / var(--tw-text-opacity, 1))}.text-\[\#1A1A1A\]{--tw-text-opacity:1;color:rgb(26 26 26 / var(--tw-text-opacity, 1))}.text-\[\#FF2A85\]{--tw-text-opacity:1;color:rgb(255 42 133 / var(--tw-text-opacity, 1))}.text-\[\#FFD21E\]{--tw-text-opacity:1;color:rgb(255 210 30 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-0{opacity:0}.opacity-100{opacity:1}.shadow-\[0_20px_0px_rgba\(0\2c 0\2c 0\2c 0\.15\)\]{--tw-shadow:0 20px 0px rgba(0,0,0,0.15);--tw-shadow-colored:0 20px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[2px_2px_0px_rgba\(0\2c 0\2c 0\2c 1\)\]{--tw-shadow:2px 2px 0px rgba(0,0,0,1);--tw-shadow-colored:2px 2px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-\[4px_4px_0px_\#1A1A1A\]{--tw-shadow:4px 4px 0px #1A1A1A;--tw-shadow-colored:4px 4px 0px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.drop-shadow-md{--tw-drop-shadow:drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:text-\[\#FF2A85\]:hover{--tw-text-opacity:1;color:rgb(255 42 133 / var(--tw-text-opacity, 1))}@media (min-width: 768px){.md\:flex{display:flex}.md\:p-10{padding:2.5rem}.md\:p-8{padding:2rem}.md\:text-4xl{font-size:2.25rem;line-height:2.5rem}.md\:text-base{font-size:1rem;line-height:1.5rem}.md\:text-sm{font-size:0.875rem;line-height:1.25rem}}@media (min-width: 1024px){.lg\:block{display:block}}</style><!-- Flashy Colorful Purple Pink Star 5 - https://www.cursors-4u.com/cursor/flashy-colorful-purple-pink-star-5 -->
+<link rel="stylesheet" href="https://cdn.cursors-4u.net/cursors/animated/flashy-colorful-purple-pink-star-5-1bd41480-32.css">
+<!-- End www.Cursors-4U.com Code --></head>
+<body class="p-4 md:p-8 flex flex-col items-center justify-center relative min-h-screen">
+
+    <!-- Blob Warna Latar Belakang -->
+    <div class="blob-pink w-96 h-96 -top-20 -left-20"></div>
+    <div class="blob-teal w-96 h-96 -bottom-20 -right-20"></div>
+    <div class="blob-pink w-80 h-80 top-1/2 left-2/3"></div>
+
+    <!-- Navigasi Atas Comel -->
+    <header class="w-full max-w-5xl flex flex-wrap justify-between items-center mb-8 bg-white/80 backdrop-blur-sm p-4 rounded-3xl border-4 border-black shadow-[4px_4px_0px_#1A1A1A] z-20">
+        <div class="flex items-center gap-2">
+            <!-- Logo Bintang Kecil -->
+            <svg class="w-8 h-8 text-[#FFD21E]" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 .587l3.668 7.431 8.2 1.192-5.934 5.787 1.4 8.168L12 18.896l-7.334 3.857 1.4-8.168L.132 9.21l8.2-1.192L12 .587z"></path>
+            </svg>
+            <span class="text-2xl font-bold tracking-wider text-[#FF2A85]">SWEETOPIA LENS</span>
+        </div>
+        <nav class="hidden md:flex gap-6 font-semibold text-[#00C2B2]">
+            <a href="file:///C:/Produk%20Jualan/sweetopiashop%202.html" class="hover:text-[#FF2A85] transition-colors">Home</a>
+            <a href="https://wa.me/60138973700" class="hover:text-[#FF2A85] transition-colors">Contact</a>
+        </nav>
+    </header>
+
+    <!-- Elemen Hiasan Terapung Kiri & Kanan (Desktop) -->
+    <div class="hidden lg:block absolute left-10 top-1/3 floating-element z-10">
+        <!-- Kotak Kanta Sentuh SVG -->
+        <svg class="w-24 h-24 drop-shadow-md" viewBox="0 0 100 100" fill="none">
+            <rect x="10" y="30" width="80" height="40" rx="15" fill="#00C2B2" stroke="#1A1A1A" stroke-width="4"></rect>
+            <circle cx="35" cy="50" r="12" fill="#FFF0F5" stroke="#1A1A1A" stroke-width="3"></circle>
+            <circle cx="65" cy="50" r="12" fill="#FFF0F5" stroke="#1A1A1A" stroke-width="3"></circle>
+            <circle cx="35" cy="50" r="6" fill="#00C2B2"></circle>
+            <circle cx="65" cy="50" r="6" fill="#00C2B2"></circle>
+        </svg>
+    </div>
+    <div class="hidden lg:block absolute right-12 top-1/4 floating-element-delayed z-10">
+        <!-- Botol Titisan Mata SVG -->
+        <svg class="w-16 h-28 drop-shadow-md" viewBox="0 0 60 100" fill="none">
+            <path d="M15 40 C15 20, 45 20, 45 40 L45 80 C45 90, 15 90, 15 80 Z" fill="#FFF" stroke="#1A1A1A" stroke-width="4"></path>
+            <rect x="22" y="15" width="16" height="15" rx="5" fill="#FF2A85" stroke="#1A1A1A" stroke-width="4"></rect>
+            <path d="M22 15 L30 5 L38 15 Z" fill="#FF2A85" stroke="#1A1A1A" stroke-width="4"></path>
+            <circle cx="30" cy="55" r="8" fill="#00C2B2"></circle>
+            <path d="M30 50 L30 60 M25 55 L35 55" stroke="#FFF" stroke-width="2"></path>
+        </svg>
+    </div>
+
+    <!-- Kontainer Utama Kad Maklum Balas -->
+    <main class="w-full max-w-2xl scalloped-card p-6 md:p-10 mb-12 flex flex-col items-center">
+        
+        <!-- Bahagian Atas: Watak Perempuan Comel & Pemilihan Warna Kanta Interaktif -->
+        <div class="relative w-full flex flex-col items-center mb-6">
+            <!-- Karakter Perempuan Comel (Gaya Chibi/Sticker) -->
+            <div class="relative w-44 h-44 mb-2">
+                <!-- SVG Watak Perempuan -->
+                <svg class="w-full h-full" viewBox="0 0 120 120" fill="none">
+                    <!-- Rambut Belakang -->
+                    <path d="M20,60 C10,30, 110,30, 100,60 C110,90, 100,100, 90,100 L30,100 C20,100, 10,90, 20,60 Z" fill="#FF8EA9"></path>
+                    <!-- Telinga -->
+                    <circle cx="28" cy="65" r="8" fill="#FFD5C6"></circle>
+                    <circle cx="92" cy="65" r="8" fill="#FFD5C6"></circle>
+                    <!-- Muka -->
+                    <circle cx="60" cy="60" r="34" fill="#FFE2D6" stroke="#1A1A1A" stroke-width="3"></circle>
+                    <!-- Rambut Depan / Bangs -->
+                    <path d="M26,45 C40,25, 80,25, 94,45 C90,40, 75,35, 60,45 C45,35, 30,40, 26,45 Z" fill="#FF8EA9" stroke="#1A1A1A" stroke-width="3"></path>
+                    <path d="M25,43 L20,55" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"></path>
+                    <path d="M95,43 L100,55" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round"></path>
+                    <!-- Ribon Comel di Atas Rambut -->
+                    <path d="M40,24 C30,15, 45,10, 52,22 C59,10, 74,15, 64,24 Z" fill="#FF2A85" stroke="#1A1A1A" stroke-width="3"></path>
+                    <circle cx="52" cy="22" r="4" fill="#FFD21E" stroke="#1A1A1A" stroke-width="2"></circle>
+                    <!-- Pipi Merona Merah -->
+                    <ellipse cx="40" cy="72" rx="6" ry="4" fill="#FF8EA9" opacity="0.6"></ellipse>
+                    <ellipse cx="80" cy="72" rx="6" ry="4" fill="#FF8EA9" opacity="0.6"></ellipse>
+                    <!-- Mulut Gembira -->
+                    <path d="M55,75 Q60,82, 65,75" stroke="#1A1A1A" stroke-width="3" stroke-linecap="round" fill="none"></path>
+                    
+                    <!-- MATA INTERAKTIF (Warna kanta akan bertukar dinamik) -->
+                    <!-- Mata Kiri -->
+                    <circle cx="44" cy="62" r="9" fill="#FFF" stroke="#1A1A1A" stroke-width="2.5"></circle>
+                    <circle id="iris-left" cx="44" cy="62" r="6" fill="#00C2B2"></circle>
+                    <circle cx="42" cy="60" r="2" fill="#FFF"></circle>
+                    
+                    <!-- Mata Kanan -->
+                    <circle cx="76" cy="62" r="9" fill="#FFF" stroke="#1A1A1A" stroke-width="2.5"></circle>
+                    <circle id="iris-right" cx="76" cy="62" r="6" fill="#00C2B2"></circle>
+                    <circle cx="74" cy="60" r="2" fill="#FFF"></circle>
+
+                    <!-- Bulu Mata Comel -->
+                    <path d="M35,58 Q38,55, 41,56" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"></path>
+                    <path d="M85,58 Q82,55, 79,56" stroke="#1A1A1A" stroke-width="2" stroke-linecap="round"></path>
+                </svg>
+            </div>
+
+            <!-- Tajuk Utama -->
+            <h1 class="text-3xl md:text-4xl font-extrabold text-[#FF2A85] text-center tracking-wide leading-tight">
+                BAGAIMANA MATA ANDA BERSINAR?
+            </h1>
+            <p class="text-sm md:text-base text-gray-700 font-semibold mt-1 text-center">
+                (Maklum Balas Kanta Sentuh Mata)
+            </p>
+            <p class="text-xs md:text-sm text-gray-500 font-medium text-center mt-1 bg-white/70 px-4 py-1 rounded-full border border-pink-200">
+                Kongsi pengalaman pemakaian kanta sentuh anda bersama kami! 💖
+            </p>
+
+            <!-- Widget Interaktif: Tukar Warna Kanta Watak -->
+            <div class="mt-4 flex items-center gap-3 bg-white/90 p-2 rounded-full border-2 border-[#1A1A1A] shadow-[2px_2px_0px_rgba(0,0,0,1)]">
+                <span class="text-xs font-bold text-gray-700 ml-2">Cuba Warna:</span>
+                <div class="flex gap-2">
+                    <span class="color-dot active" style="background-color: #00C2B2;" onclick="changeLensColor(&#39;#00C2B2&#39;, this)"></span>
+                    <span class="color-dot" style="background-color: #FF2A85;" onclick="changeLensColor(&#39;#FF2A85&#39;, this)"></span>
+                    <span class="color-dot" style="background-color: #9C27B0;" onclick="changeLensColor(&#39;#9C27B0&#39;, this)"></span>
+                    <span class="color-dot" style="background-color: #FF9800;" onclick="changeLensColor(&#39;#FF9800&#39;, this)"></span>
+                    <span class="color-dot" style="background-color: #4CAF50;" onclick="changeLensColor(&#39;#4CAF50&#39;, this)"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Borang Maklum Balas Sememangnya Interaktif -->
+        <form action="https://formspree.io/f/xpqepljl" method="POST">
+    
+            
+            <!-- Medan 1: Nama Penuh -->
+            <div class="flex flex-col gap-1 relative">
+                <label for="nama" class="text-sm font-bold text-[#1A1A1A] flex items-center gap-2">
+                    <span>Nama Penuh</span>
+                </label>
+                <div class="relative">
+                    <!-- Icon Gadis Avatar SVG -->
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-xl pointer-events-none">👧</span>
+                    <input type="text" id="nama" name="nama" required="" placeholder="Masukkan nama cantik anda..." class="w-full h-12 cute-input text-gray-800 font-medium">
+                </div>
+            </div>
+
+            <!-- Medan 2: Emel Pengguna -->
+            <div class="flex flex-col gap-1 relative">
+                <label for="emel" class="text-sm font-bold text-[#1A1A1A]">
+                    Alamat Emel
+                </label>
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-xl pointer-events-none">✉️</span>
+                    <input type="email" id="emel" name="emel" required="" placeholder="Masukkan emel anda di sini..." class="w-full h-12 cute-input text-gray-800 font-medium">
+                </div>
+            </div>
+
+            <!-- Medan 3: Maklum Balas Jenis Kanta -->
+            <div class="flex flex-col gap-1 relative">
+                <label for="jenis_kanta" class="text-sm font-bold text-[#1A1A1A]">
+                    Jenis Kanta &amp; Maklum Balas Kesesuaian
+                </label>
+                <div class="relative">
+                    <span class="absolute left-4 top-1/2 -translate-y-1/2 text-xl pointer-events-none">👁️</span>
+                    <input type="text" id="jenis_kanta" name="jenis_kanta" required="" placeholder="Tahap keselesaan, kesesuaian &amp; rasa mata kering..." class="w-full h-12 cute-input text-gray-800 font-medium">
+                </div>
+            </div>
+
+            <!-- Medan 4: Pengalaman Mata Terperinci -->
+            <div class="flex flex-col gap-1 relative">
+                <label for="komen" class="text-sm font-bold text-[#1A1A1A]">
+                    Pengalaman Mata Terperinci Anda
+                </label>
+                <div class="relative">
+                    <span class="absolute left-4 top-5 text-xl pointer-events-none">🔍</span>
+                    <textarea id="komen" name="komen" rows="4" required="" placeholder="Kongsi detik kilauan mata yang menakjubkan dan kejelasan penglihatan anda..." class="w-full p-4 pl-14 rounded-3xl cute-input text-gray-800 font-medium resize-none min-h-[110px]"></textarea>
+                </div>
+            </div>
+
+            <!-- Butang Hantar -->
+            <div class="flex justify-center mt-3">
+                <button type="submit" class="cute-btn w-full py-4 rounded-3xl text-xl text-white tracking-widest uppercase">
+        <h1>Hantar Maklum Balas </h1>
+                </button>
+            </div>
+    
+</form>
+
+    </main>
+
+    <!-- Modal Kejayaan / Maklum Balas Dihantar (Tiada alert() menjengkelkan) -->
+    <div id="successModal" class="fixed inset-0 modal-overlay flex items-center justify-center z-50 opacity-0 transition-opacity duration-300 hidden">
+        <div class="bg-white p-8 rounded-[40px] border-6 border-[#00C2B2] max-w-sm w-full mx-4 text-center shadow-[0_20px_0px_rgba(0,0,0,0.15)] transform transition-transform duration-300 relative scale-90">
+            <span class="text-6xl mb-4 block animate-bounce">💖</span>
+            <h2 class="text-2xl font-bold text-[#FF2A85] mb-2">Terima Kasih Banyak-banyak!</h2>
+            <p class="text-gray-600 mb-6 font-medium">
+                Maklum balas berharga anda telah berjaya dihantar. Teruskan menyinar setiap hari! ✨
+            </p>
+            <button onclick="closeModal()" class="cute-btn px-8 py-2.5 rounded-full text-white font-semibold">
+                Sama-sama!
+            </button>
+        </div>
+    </div>
+
+    <!-- Sistem Animasi Partikel Hati Belon -->
+    <div id="particle-container" class="absolute inset-0 pointer-events-none z-30 overflow-hidden"></div>
+
+    <!-- Script Logik Interaktif & Animasi -->
+    <script>
+        // Fungsi Penukaran Warna Kanta Mata Watak Chibi
+        function changeLensColor(color, element) {
+            // Tukar warna di SVG
+            document.getElementById('iris-left').setAttribute('fill', color);
+            document.getElementById('iris-right').setAttribute('fill', color);
+            
+            // Kemas kini status dot aktif
+            const dots = document.querySelectorAll('.color-dot');
+            dots.forEach(dot => dot.classList.remove('active'));
+            element.classList.add('active');
+
+            // Cetus letupan kecil partikel warna sepadan di sekeliling muka watak
+            createColorSparks(color);
+        }
+
+        // Kesan Letupan Warna Apabila Memilih Kanta
+        function createColorSparks(color) {
+            const container = document.getElementById('particle-container');
+            const rect = document.querySelector('.w-44').getBoundingClientRect();
+            const bodyRect = document.body.getBoundingClientRect();
+            
+            const centerX = rect.left - bodyRect.left + rect.width / 2;
+            const centerY = rect.top - bodyRect.top + rect.height / 2;
+
+            for (let i = 0; i < 8; i++) {
+                const p = document.createElement('div');
+                p.style.position = 'absolute';
+                p.style.width = '10px';
+                p.style.height = '10px';
+                p.style.borderRadius = '50%';
+                p.style.backgroundColor = color;
+                p.style.left = centerX + 'px';
+                p.style.top = centerY + 'px';
+                p.style.transition = 'all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+                
+                container.appendChild(p);
+
+                // Gerakkan partikel secara rawak ke luar
+                const angle = (i * 45) * (Math.PI / 180);
+                const distance = 40 + Math.random() * 30;
+                const targetX = centerX + Math.cos(angle) * distance;
+                const targetY = centerY + Math.sin(angle) * distance;
+
+                setTimeout(() => {
+                    p.style.transform = `translate(${targetX - centerX}px, ${targetY - centerY}px)`;
+                    p.style.opacity = '0';
+                }, 10);
+
+                setTimeout(() => p.remove(), 600);
+            }
+        }
+
+        // Pengendalian Penghantaran Borang
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Ambil maklumat
+            const nama = document.getElementById('nama').value;
+            const emel = document.getElementById('emel').value;
+            const jenisKanta = document.getElementById('jenis_kanta').value;
+            const komen = document.getElementById('komen').value;
+
+            console.log("Menghantar Maklum Balas:", { nama, emel, jenisKanta, komen });
+
+            // Letupkan konfeti hati gembira
+            launchHeartConfetti();
+
+            // Papar Modal Kejayaan
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.add('opacity-100');
+                modal.firstElementChild.classList.remove('scale-90');
+                modal.firstElementChild.classList.add('scale-100');
+            }, 50);
+        });
+
+        // Tutup Modal & Set Semula Borang
+        function closeModal() {
+            const modal = document.getElementById('successModal');
+            modal.classList.remove('opacity-100');
+            modal.firstElementChild.classList.remove('scale-100');
+            modal.firstElementChild.classList.add('scale-90');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                document.getElementById('feedbackForm').reset();
+            }, 300);
+        }
+
+        // Kesan Letupan Konfeti Hati (Hantar Borang)
+        function launchHeartConfetti() {
+            const container = document.getElementById('particle-container');
+            const colors = ['#FF2A85', '#00C2B2', '#FFD21E', '#FF6F6F', '#FF8EA9'];
+            const hearts = ['💖', '💕', '✨', '🌸', '👀'];
+
+            for (let i = 0; i < 40; i++) {
+                const heart = document.createElement('div');
+                heart.innerText = hearts[Math.floor(Math.random() * hearts.length)];
+                heart.style.position = 'absolute';
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.top = '100vh';
+                heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+                heart.style.zIndex = '999';
+                heart.style.transition = `all ${Math.random() * 2 + 1.5}s ease-out`;
+                
+                container.appendChild(heart);
+
+                // Mulakan simulasi naik ke atas secara terapung
+                setTimeout(() => {
+                    heart.style.transform = `translateY(-120vh) translateX(${(Math.random() - 0.5) * 300}px) rotate(${Math.random() * 360}deg)`;
+                    heart.style.opacity = '0';
+                }, 50);
+
+                // Buang elemen selepas tamat animasi
+                setTimeout(() => heart.remove(), 3500);
+            }
+        }
+    </script>
+
+</body></html>
