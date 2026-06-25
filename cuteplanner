@@ -1,0 +1,3323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Sweet Life Digital Planner 🌸</title>
+    <!-- Playful cute Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght=300..700&family=Quicksand:wght=300..700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons for adorable visual glyphs -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fredoka: ['"Fredoka"', 'sans-serif'],
+                        quicksand: ['"Quicksand"', 'sans-serif'],
+                    },
+                    colors: {
+                        sky: {
+                            50: '#F0F9FF',
+                            100: '#E0F2FE',
+                            200: '#BAE6FD',
+                            300: '#7DD3FC',
+                            400: '#38BDF8',
+                            500: '#0EA5E9',
+                            950: '#0369A1'
+                        },
+                        pastelYellow: {
+                            50: '#FFFDF0',
+                            100: '#FEF9C3',
+                            200: '#FEF08A',
+                            300: '#FDE047',
+                            400: '#FACC15'
+                        },
+                        pastelPink: {
+                            50: '#FFF5F5',
+                            100: '#FFE4E6',
+                            200: '#FECDD3',
+                            300: '#FDA4AF',
+                            400: '#FB7185',
+                            600: '#E11D48'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #FDFBF7;
+            background-image: radial-gradient(#E0F2FE 1.2px, #FDFBF7 1.2px);
+            background-size: 24px 24px;
+        }
+
+        h1, h2, h3, h4, .font-cute {
+            font-family: 'Fredoka', sans-serif;
+        }
+
+        /* Print Preview Mode Styles */
+        body.in-print-preview {
+            background: #e2e8f0 !important;
+            background-image: none !important;
+            padding: 80px 10px 20px 10px !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            overflow-y: auto !important;
+        }
+
+        body.in-print-preview #print-preview-header {
+            display: flex !important;
+        }
+
+        body.in-print-preview #planner-header,
+        body.in-print-preview #stylus-toolbar,
+        body.in-print-preview #planner-sidebar-tabs,
+        body.in-print-preview #planner-footer {
+            display: none !important;
+        }
+
+        body.in-print-preview #planner-binder-frame {
+            display: flex !important;
+            max-width: 210mm !important;
+            width: 100% !important;
+            height: 297mm !important;
+            margin: 0 auto !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+            border-radius: 1.5rem !important;
+            background: #ffffff !important;
+            transform: none !important;
+        }
+
+        body.in-print-preview .outer-book-cover {
+            background: #ffffff !important;
+            padding: 0 !important;
+            border: none !important;
+            border-radius: 1.5rem !important;
+            box-shadow: none !important;
+            width: 100% !important;
+            height: 100% !important;
+        }
+
+        body.in-print-preview .inner-double-page {
+            border: 2px solid #BAE6FD !important;
+            box-shadow: none !important;
+            border-radius: 1.5rem !important;
+            padding: 20mm !important;
+            width: 100% !important;
+            height: 100% !important;
+            margin-left: 0 !important;
+        }
+
+        /* Hide spiral wire rings inside print preview */
+        body.in-print-preview .outer-book-cover > .absolute {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            body.in-print-preview #planner-binder-frame {
+                height: auto !important;
+                aspect-ratio: 1 / 1.414 !important;
+            }
+        }
+
+        /* Paper texture lines */
+        .paper-grid {
+            background-image: linear-gradient(rgba(186, 230, 253, 0.15) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(186, 230, 253, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Pink grid background */
+        .pink-grid {
+            background-color: #FFF0F0;
+            background-image: linear-gradient(rgba(244, 63, 94, 0.08) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(244, 63, 94, 0.08) 1px, transparent 1px);
+            background-size: 22px 22px;
+        }
+
+        /* Gingham check pattern */
+        .pink-gingham {
+            background-color: #FFF5F5;
+            background-image: linear-gradient(90deg, rgba(251, 113, 133, 0.12) 50%, transparent 50%),
+                              linear-gradient(rgba(251, 113, 133, 0.12) 50%, transparent 50%);
+            background-size: 24px 24px;
+        }
+
+        /* Stunning purple/pink template background */
+        .monthly-dotted-canvas {
+            background-color: #FFFFFF;
+            background-image: radial-gradient(#BE9FE1 1.2px, transparent 1.2px);
+            background-size: 14px 14px;
+            border: 2px solid #E4D5F6;
+        }
+
+        .notes-dotted-lines {
+            background-image: linear-gradient(to bottom, transparent 95%, rgba(244, 63, 94, 0.12) 95%);
+            background-size: 100% 24px;
+            background-repeat: repeat;
+            line-height: 24px;
+        }
+
+        .paper-lines {
+            background-image: linear-gradient(#f0f0f0 1px, transparent 1px);
+            background-size: 100% 24px;
+        }
+
+        /* Custom Input Dates styling for uniform cute look */
+        input[type="date"], input[type="month"] {
+            border: 1px solid #BAE6FD;
+            border-radius: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            background-color: #ffffff;
+            color: #0369A1;
+            font-size: 0.75rem;
+            font-family: 'Fredoka', sans-serif;
+            outline: none;
+            transition: all 0.2s;
+        }
+        input[type="date"]:focus, input[type="month"]:focus {
+            border-color: #7DD3FC;
+            box-shadow: 0 0 0 2px rgba(125, 211, 252, 0.2);
+        }
+
+        /* Customized scrollbars inside book pages */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(254, 249, 195, 0.2);
+            border-radius: 99px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #BAE6FD;
+            border-radius: 99px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #7DD3FC;
+        }
+
+        /* Hide mobile scrollbars */
+        .scrollbar-none::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-none {
+            -ms-overflow-style: none;  /* IE/Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        /* Interactive wiggles */
+        .cute-hover {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .cute-hover:hover {
+            transform: scale(1.03) rotate(-0.5deg);
+        }
+
+        /* Active tab styling transitions */
+        .tab-active {
+            z-index: 40 !important;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+            border-bottom-color: transparent !important;
+        }
+        
+        @media (min-width: 768px) {
+            .tab-active {
+                transform: translateX(6px) scale(1.05);
+                border-left-color: transparent !important;
+                border-bottom-color: #f3f4f6 !important;
+            }
+        }
+
+        /* Stylus Mode Canvas Overlay styles */
+        .drawing-canvas {
+            touch-action: none;
+        }
+
+        /* Sticker Physics Drop Animation */
+        @keyframes dropSticker {
+            0% { transform: translateY(-160px) scale(1.4) rotate(0deg); opacity: 0; }
+            60% { transform: translateY(10px) scale(0.9) rotate(var(--rot-deg, 5deg)); }
+            80% { transform: translateY(-5px) scale(1.05) rotate(var(--rot-deg, 5deg)); }
+            100% { transform: translateY(0) scale(1) rotate(var(--rot-deg, 5deg)); opacity: 1; }
+        }
+        .animate-drop-cozy {
+            animation: dropSticker 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+        }
+
+        @keyframes bounceShort {
+            0%, 100% { transform: translateY(0) rotate(var(--rot-deg, 0deg)); }
+            50% { transform: translateY(-3px) rotate(var(--rot-deg, 0deg)); }
+        }
+        .animate-bounce-short {
+            animation: bounceShort 2.5s infinite ease-in-out;
+        }
+
+        .quilted-pattern {
+            background-color: #FFDEE9;
+            background-image: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
+            position: relative;
+        }
+        .quilted-pattern::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: 
+                radial-gradient(circle, rgba(255,255,255,0.4) 1px, transparent 1px),
+                linear-gradient(45deg, rgba(255,182,193,0.15) 25%, transparent 25%, transparent 75%, rgba(255,182,193,0.15) 75%),
+                linear-gradient(135deg, rgba(255,182,193,0.15) 25%, transparent 25%, transparent 75%, rgba(255,182,193,0.15) 75%);
+            background-size: 20px 20px, 40px 40px, 40px 40px;
+            background-position: 0 0, 0 0, 20px 20px;
+            opacity: 0.85;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        /* Biometric Ripple Pulse Effect */
+        @keyframes fingerprintPulse {
+            0% { transform: scale(0.9); opacity: 0.9; }
+            50% { transform: scale(1.15); opacity: 0.4; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+        .scanner-pulse {
+            animation: fingerprintPulse 1.6s infinite ease-out;
+        }
+
+        @media print {
+            @page {
+                size: A4 portrait;
+                margin: 0.8cm;
+            }
+            body {
+                background: none !important;
+                background-color: #ffffff !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                overflow: visible !important;
+            }
+            header, footer, nav, #mood-selector, .no-print, button, select, 
+            input[type="button"], #audio-btn, #stylus-toolbar, #stylus-toggle-btn, #print-preview-header {
+                display: none !important;
+            }
+            main {
+                margin: 0 !important;
+                padding: 0 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                height: auto !important;
+                box-shadow: none !important;
+                transform: none !important;
+                position: relative !important;
+            }
+            .outer-book-cover {
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                padding: 0 !important;
+                margin: 0 !important;
+                width: 100% !important;
+                height: auto !important;
+            }
+            .outer-book-cover > .absolute {
+                display: none !important;
+            }
+            .inner-double-page {
+                border: 2px solid #BAE6FD !important;
+                box-shadow: none !important;
+                background-color: #ffffff !important;
+                width: 100% !important;
+                height: auto !important;
+                border-radius: 1.5rem !important;
+                padding: 16px !important;
+                margin-left: 0 !important;
+            }
+            .planner-page {
+                display: block !important;
+                opacity: 1 !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
+            input, textarea, select {
+                border: none !important;
+                background: transparent !important;
+                resize: none !important;
+                box-shadow: none !important;
+                appearance: none !important;
+                color: #0369A1 !important;
+            }
+            .custom-scrollbar {
+                max-height: none !important;
+                overflow: visible !important;
+            }
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start p-2.5 sm:p-6 overflow-x-hidden select-none">
+
+    <div id="print-preview-header" class="hidden fixed top-0 left-0 right-0 h-16 bg-white border-b border-sky-100 shadow-md flex items-center justify-between px-4 sm:px-8 z-50 no-print">
+        <div class="flex items-center gap-2">
+            <div class="bg-emerald-50 p-2 rounded-full border border-emerald-150 text-emerald-600">
+                <i data-lucide="printer" class="w-4 h-4"></i>
+            </div>
+            <div>
+                <h4 class="text-xs sm:text-sm font-bold text-sky-955 font-cute">A4 Print Preview Mode</h4>
+                <p class="text-[9px] sm:text-[10px] text-sky-955/65 font-medium">Verify your handwritings & lists before printing as normal PDF.</p>
+            </div>
+        </div>
+        <div class="flex items-center gap-2">
+            <button onclick="triggerNormalPrint()" class="flex items-center gap-1.5 bg-emerald-400 hover:bg-emerald-500 text-white font-cute font-bold text-xs py-2 px-4 rounded-xl transition shadow-sm">
+                <span>Print PDF Now</span>
+            </button>
+            <button onclick="togglePrintPreview(false)" class="flex items-center gap-1 bg-rose-400 hover:bg-rose-500 text-white font-cute font-bold text-xs py-2 px-4 rounded-xl transition shadow-sm">
+                <span>Exit Preview</span>
+            </button>
+        </div>
+    </div>
+
+    <header id="planner-header" class="hidden w-full max-w-4xl flex flex-col md:flex-row items-center justify-between mb-4 gap-3 z-10 no-print">
+        <div class="flex items-center gap-3">
+            <div class="bg-pastelYellow-200 p-2 rounded-full shadow-sm border border-pastelYellow-300 animate-bounce">
+                <span class="text-xl sm:text-2xl">🧸</span>
+            </div>
+            <div>
+                <h1 id="lbl-app-title" class="text-xl sm:text-2xl md:text-3xl font-bold text-sky-955 flex items-center gap-1.5 flex-wrap" data-t="app_title">
+                    My Sweet Life Digital Planner <span class="text-pastelPink-300 text-sm sm:text-base">🎀</span>
+                </h1>
+                <p id="lbl-app-subtitle" class="text-[10px] sm:text-xs text-sky-955/70 font-medium" data-t="app_subtitle">Your cozy responsive personal binder. Handcrafted with love 🌸</p>
+            </div>
+        </div>
+
+        <!-- Custom Controls Drawer -->
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3 bg-white/80 backdrop-blur px-3 sm:px-4 py-1.5 sm:py-2 rounded-2xl border border-sky-100 shadow-sm w-full md:w-auto justify-between md:justify-start">
+            <div class="flex items-center gap-1.5">
+                <span id="lbl-mood-head" class="text-[10px] sm:text-xs font-bold text-sky-955" data-t="mood">Mood:</span>
+                <div class="flex gap-1" id="mood-selector">
+                    <button onclick="setMood('😊')" class="hover:scale-125 transition duration-150 text-xs sm:text-sm" title="Happy">😊</button>
+                    <button onclick="setMood('🧸')" class="hover:scale-125 transition duration-150 text-xs sm:text-sm" title="Cozy">🧸</button>
+                    <button onclick="setMood('✨')" class="hover:scale-125 transition duration-150 text-xs sm:text-sm" title="Productive">✨</button>
+                    <button onclick="setMood('🌸')" class="hover:scale-125 transition duration-150 text-xs sm:text-sm" title="Sweet">🌸</button>
+                    <button onclick="setMood('😴')" class="hover:scale-125 transition duration-150 text-xs sm:text-sm" title="Sleepy">😴</button>
+                </div>
+                <span id="active-mood" class="bg-pastelYellow-100 px-1.5 py-0.5 rounded-lg text-[10px] sm:text-xs font-bold text-sky-955 border border-pastelYellow-200 ml-1">😊</span>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <div class="border-l border-sky-100 h-5"></div>
+                
+                <!-- Bilingual Translation Button -->
+                <button onclick="toggleLanguage()" class="flex items-center gap-1 bg-sky-100 hover:bg-sky-200 text-sky-955 font-bold text-[10px] sm:text-xs py-1 px-2.5 rounded-lg border border-sky-200 transition" title="Tukar Bahasa / Switch Language">
+                    <span class="text-xs">🌐</span>
+                    <span id="lang-text" class="font-cute">EN</span>
+                </button>
+
+                <!-- Stylus Pen Mode Toggle -->
+                <button onclick="toggleStylusMode()" id="stylus-toggle-btn" class="flex items-center gap-1 bg-pastelYellow-100 hover:bg-pastelYellow-200 text-sky-955 font-bold text-[10px] sm:text-xs py-1 px-2.5 rounded-lg border border-pastelYellow-300 transition" title="Toggle Stylus Writing Pen Mode">
+                    <span id="stylus-status-icon">✏️</span>
+                    <span id="stylus-status-text">Stylus Off</span>
+                </button>
+                
+                <!-- PDF Portrait Printer Button -->
+                <button onclick="printPlanner()" class="flex items-center gap-1 bg-sky-400 hover:bg-sky-500 text-white font-bold text-[10px] sm:text-xs py-1 px-2.5 rounded-lg transition" title="Export PDF Page View">
+                    <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+                    <span id="lbl-pdf-print" data-t="pdf_print">PDF Print</span>
+                </button>
+
+                <!-- Lock Binder Button -->
+                <button onclick="lockPlannerBinder()" class="flex items-center gap-1 bg-amber-400 hover:bg-amber-500 text-white font-bold text-[10px] sm:text-xs py-1 px-2.5 rounded-lg transition" title="Lock Binder Cover">
+                    <i data-lucide="lock" class="w-3.5 h-3.5"></i>
+                    <span id="lbl-lock-action" data-t="lock_binder">Lock Binder</span>
+                </button>
+
+                <!-- Audio Switcher -->
+                <button onclick="toggleAudio()" id="audio-btn" class="text-sky-955/60 hover:text-sky-955 transition p-1" title="Toggle Page Flip Sound">
+                    <i data-lucide="volume-2" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="stylus-toolbar" class="hidden w-full max-w-4xl mb-3 flex flex-wrap items-center justify-between gap-3 bg-white/95 border border-pastelYellow-200 p-2.5 rounded-2xl shadow-sm z-30 no-print animate-fade-in">
+        <div class="flex items-center gap-2 flex-wrap">
+            <span id="lbl-pen-crayon" class="text-[10px] sm:text-xs font-bold text-sky-955 flex items-center gap-1" data-t="pen_crayon">🎨 Pen Crayon:</span>
+            <!-- Color options -->
+            <div class="flex gap-1.5 items-center bg-sky-50/50 p-1 rounded-lg border border-sky-100">
+                <button id="color-strawberry" onclick="setPenColor('#FDA4AF')" class="w-5 h-5 rounded-full border-2 border-white ring-2 ring-pastelPink-300 shadow-sm" style="background-color: #FDA4AF;" title="Strawberry Pink"></button>
+                <button id="color-cloud" onclick="setPenColor('#38BDF8')" class="w-5 h-5 rounded-full border-2 border-white" style="background-color: #38BDF8;" title="Cloud Blue"></button>
+                <button id="color-honey" onclick="setPenColor('#FACC15')" class="w-5 h-5 rounded-full border-2 border-white" style="background-color: #FACC15;" title="Honey Yellow"></button>
+                <button id="color-charcoal" onclick="setPenColor('#374151')" class="w-5 h-5 rounded-full border-2 border-white" style="background-color: #374151;" title="Charcoal Grey"></button>
+            </div>
+            
+            <!-- Customizable Size Slider -->
+            <div class="flex items-center gap-1.5 bg-sky-50/50 p-1 rounded-lg border border-sky-100 text-[10px]">
+                <span id="lbl-pen-size" class="font-bold text-sky-955" data-t="size">Size:</span>
+                <input type="range" id="pen-size-slider" min="1" max="100" value="5" oninput="updatePenSize(this.value)" class="w-20 sm:w-28 h-1 bg-sky-200 rounded-lg appearance-none cursor-pointer accent-sky-500">
+                <span id="pen-size-display" class="font-bold text-sky-955 w-7 text-center">5%</span>
+            </div>
+        </div>
+        
+        <div class="flex items-center gap-2">
+            <!-- Undo / Redo tools -->
+            <div class="flex gap-1 bg-sky-50/50 p-1 rounded-lg border border-sky-100 text-[10px] sm:text-xs">
+                <button onclick="undoStylus()" class="px-2 py-0.5 font-bold rounded hover:bg-sky-100 text-sky-955 flex items-center gap-0.5" title="Undo"><span id="lbl-undo" data-t="undo">↩️ Undo</span></button>
+                <button onclick="redoStylus()" class="px-2 py-0.5 font-bold rounded hover:bg-sky-100 text-sky-955 flex items-center gap-0.5" title="Redo"><span id="lbl-redo" data-t="redo">↪️ Redo</span></button>
+            </div>
+
+            <!-- Draw vs Eraser toggles -->
+            <div class="flex gap-1 bg-sky-50/50 p-1 rounded-lg border border-sky-100 text-[10px] sm:text-xs">
+                <button id="tool-pen-btn" onclick="setPenTool('pen')" class="px-2.5 py-0.5 font-bold rounded bg-sky-400 text-white flex items-center gap-1" data-t="draw">✏️ Draw</button>
+                <button id="tool-eraser-btn" onclick="setPenTool('eraser')" class="px-2.5 py-0.5 font-bold rounded hover:bg-sky-100 text-sky-955/70 flex items-center gap-1" data-t="eraser">🧽 Eraser</button>
+            </div>
+            <!-- Clear Action -->
+            <button id="lbl-clear-btn" onclick="openClearDrawingsModal()" class="text-rose-400 hover:text-rose-600 hover:bg-rose-50 font-bold text-[10px] sm:text-xs px-2.5 py-1.5 rounded-xl border border-rose-100 transition" data-t="clear_handwritings">✨ Clear Page Markings</button>
+        </div>
+    </div>
+
+    <div id="book-cover-screen" class="w-full max-w-lg mx-auto flex flex-col items-center justify-center min-h-[80vh] relative z-40 p-4">
+        <!-- Physical Book Binder Outer Structure -->
+        <div class="quilted-pattern w-full rounded-[2.5rem] border-[6px] border-white shadow-[0_25px_60px_-15px_rgba(225,29,72,0.25)] p-6 sm:p-8 relative flex flex-col justify-between items-center text-center select-text min-h-[580px] hover:shadow-[0_30px_70px_rgba(225,29,72,0.35)] transition-all duration-500">
+            
+            <!-- Cozy Stitching Edges -->
+            <div class="absolute inset-2 rounded-[2rem] border-2 border-dashed border-white/60 pointer-events-none"></div>
+
+            <!-- Skeuomorphic Leather Binder Strap & Latch Lock -->
+            <div class="absolute -right-3 top-1/2 transform -translate-y-1/2 w-16 h-12 bg-rose-200 border-2 border-white rounded-l-xl shadow-md flex items-center justify-center z-20 pointer-events-none">
+                <div class="w-8 h-8 bg-amber-400 rounded-full border-2 border-white flex items-center justify-center shadow-sm">
+                    <span class="text-sm">💖</span>
+                </div>
+            </div>
+
+            <div class="w-full pt-4 z-10">
+                <div class="mx-auto w-16 h-16 bg-white/90 rounded-full flex items-center justify-center border-4 border-rose-200 shadow-inner mb-3">
+                    <span class="text-3xl animate-pulse">🌸</span>
+                </div>
+                <!-- Binder Book Title Requested: My Sweet Planner -->
+                <h1 id="lbl-cover-title" class="text-3xl sm:text-4xl font-extrabold text-rose-950 font-cute tracking-wider drop-shadow-md">My Sweet Planner</h1>
+                <p id="lbl-cover-subtitle" class="text-xs text-rose-800/80 font-semibold mt-1 italic" data-t="cover_sub">Your secure cozy digital diary 🔒</p>
+            </div>
+
+            <!-- Library Owner Login Identification Card -->
+            <div class="w-full bg-white/95 rounded-3xl p-5 border-2 border-rose-100 shadow-md mt-6 mb-6 z-10 max-w-sm relative">
+                <!-- Swappable Authentication Forms -->
+                
+                <!-- 1. SIGN IN FORM -->
+                <div id="cover-signin-form" class="space-y-3.5">
+                    <h3 class="text-sm font-bold text-rose-900 tracking-wide flex items-center justify-center gap-1">
+                        <span>🎀</span> <span id="lbl-signin-header" data-t="sign_in">Sign In to Owner File</span>
+                    </h3>
+                    <div class="space-y-2">
+                        <input type="text" id="signin-username" class="w-full p-2.5 text-xs text-rose-900 bg-rose-50/60 border border-rose-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-rose-400" placeholder="Username / ID">
+                        <input type="password" id="signin-password" class="w-full p-2.5 text-xs text-rose-900 bg-rose-50/60 border border-rose-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-rose-400" placeholder="Cozy Password">
+                    </div>
+                    <button onclick="handleSignIn()" class="w-full py-2.5 bg-rose-400 hover:bg-rose-500 text-white font-bold text-xs rounded-xl transition shadow-md flex items-center justify-center gap-1">
+                        <i data-lucide="unlock" class="w-3.5 h-3.5"></i>
+                        <span id="lbl-signin-btn" data-t="open_binder">Unlock Binder</span>
+                    </button>
+                    
+                    <div class="flex items-center justify-between text-[10px] text-rose-700 font-semibold pt-1">
+                        <button onclick="toggleAuthForm('signup')" class="hover:underline" id="lbl-go-signup" data-t="create_profile">New? Create Profile</button>
+                        <button onclick="requestTemporaryCode()" class="hover:underline text-amber-600" id="lbl-forgot-pw" data-t="forgot_credentials">Forgot details?</button>
+                    </div>
+                </div>
+
+                <!-- 2. SIGN UP FORM -->
+                <div id="cover-signup-form" class="hidden space-y-3.5">
+                    <h3 class="text-sm font-bold text-rose-900 tracking-wide flex items-center justify-center gap-1">
+                        <span>🌱</span> <span id="lbl-signup-header" data-t="sign_up">Create Owner Profile</span>
+                    </h3>
+                    <div class="space-y-2">
+                        <input type="text" id="signup-username" class="w-full p-2.5 text-xs text-rose-900 bg-rose-50/60 border border-rose-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-rose-400" placeholder="New Username">
+                        <input type="password" id="signup-password" class="w-full p-2.5 text-xs text-rose-900 bg-rose-50/60 border border-rose-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-rose-400" placeholder="Secure Password">
+                    </div>
+                    <button onclick="handleSignUp()" class="w-full py-2.5 bg-sky-400 hover:bg-sky-500 text-white font-bold text-xs rounded-xl transition shadow-md" id="lbl-signup-btn" data-t="save_profile">Save & Register Profile</button>
+                    
+                    <div class="text-center text-[10px] text-rose-700 font-semibold pt-1">
+                        <button onclick="toggleAuthForm('signin')" class="hover:underline" id="lbl-go-signin" data-t="back_to_signin">Have an account? Sign In</button>
+                    </div>
+                </div>
+
+                <!-- 3. TEMPORARY CODE RECOVERY FORM -->
+                <div id="cover-recovery-form" class="hidden space-y-3.5">
+                    <h3 class="text-sm font-bold text-rose-900 tracking-wide flex items-center justify-center gap-1">
+                        <span>🔑</span> <span id="lbl-recovery-header" data-t="temporary_access">Temporary Access Code</span>
+                    </h3>
+                    <p class="text-[9px] text-rose-800 leading-relaxed" id="lbl-recovery-instructions" data-t="enter_temp_key">Paste or type the cozy recovery key generated for you below:</p>
+                    <input type="text" id="recovery-code-input" class="w-full p-2.5 text-center text-xs tracking-widest font-cute text-rose-900 bg-rose-50/60 border border-rose-100 rounded-xl focus:outline-none focus:ring-1 focus:ring-rose-400" placeholder="SWEET-XXXX">
+                    <button onclick="handleRecoveryLogin()" class="w-full py-2.5 bg-amber-400 hover:bg-amber-500 text-white font-bold text-xs rounded-xl transition shadow-md" id="lbl-recovery-btn" data-t="bypass_signin">Log In Instant Key</button>
+                    
+                    <div class="text-center text-[10px] text-rose-700 font-semibold pt-1">
+                        <button onclick="toggleAuthForm('signin')" class="hover:underline" id="lbl-recovery-cancel" data-t="back_to_signin">Cancel</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cozy simulated Biometric Thumbprint touch zone -->
+            <div class="w-full flex flex-col items-center justify-center gap-2 z-10">
+                <span class="text-[10px] font-bold text-rose-955/80" id="lbl-thumbprint-desc" data-t="thumb_desc">Or press and hold fingerprint scanner to login</span>
+                
+                <div class="relative w-16 h-16 flex items-center justify-center cursor-pointer touch-none" id="fingerprint-scan-zone" onmousedown="startBiometricScan(event)" ontouchstart="startBiometricScan(event)">
+                    <!-- Ripple Pulses -->
+                    <div class="absolute inset-0 bg-rose-300 rounded-full scanner-pulse"></div>
+                    <div class="absolute inset-1.5 bg-rose-400 rounded-full scanner-pulse" style="animation-delay: 0.4s"></div>
+                    <div class="absolute inset-3 bg-rose-500 rounded-full scanner-pulse" style="animation-delay: 0.8s"></div>
+                    
+                    <!-- Solid Scanner button -->
+                    <div class="relative w-12 h-12 bg-white rounded-full flex items-center justify-center border-4 border-rose-200 shadow-md">
+                        <!-- Simulated thumbprint heart icon icon -->
+                        <span class="text-lg text-rose-500">🐾</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-6 text-[10px] text-rose-950/60 font-semibold italic z-10" id="lbl-cover-footer" data-t="cover_footer">Designed with love & security 🌸</div>
+        </div>
+    </div>
+
+    <main id="planner-binder-frame" class="hidden w-full max-w-4xl flex relative justify-center items-stretch mt-10 md:mt-0">
+        
+        <!-- Physical Notebook Cover Shadow Structure -->
+        <div class="outer-book-cover w-full max-w-2xl flex bg-gradient-to-r from-sky-200 via-sky-100 to-sky-200 p-2 sm:p-4 md:p-5 rounded-3xl shadow-2xl border-2 md:border-4 border-white relative h-[610px] sm:h-[670px] md:h-[730px]">
+            
+            <!-- Skeuomorphic Spiral Wire Rings on the Left Edge -->
+            <div class="absolute left-0 top-6 bottom-6 flex flex-col justify-between w-4 z-50 pointer-events-none no-print">
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+                <div class="w-3.5 h-6 bg-gradient-to-r from-gray-400 via-gray-100 to-gray-500 rounded-full border border-gray-600 my-1 shadow-md"></div>
+            </div>
+
+            <!-- Single Page Canvas Grid Area -->
+            <div class="inner-double-page w-full h-full bg-white/95 rounded-2xl overflow-hidden shadow-inner relative paper-grid border border-sky-100 p-4 sm:p-5 ml-4 flex flex-col justify-between">
+                
+                <!-- Absolute Stylus Canvas Layer over Single page -->
+                <canvas id="canvas-main" class="drawing-canvas absolute inset-0 z-20 pointer-events-none w-full h-full cursor-crosshair"></canvas>
+
+                <!-- Decorative Tape Sticker decoration -->
+                <div id="lbl-decor-tape" class="absolute top-3 right-6 sm:right-10 transform rotate-3 bg-pastelYellow-100/85 border-l-2 border-dashed border-pastelYellow-400 text-sky-955 text-[9px] sm:text-[10px] font-bold py-0.5 sm:py-1 px-3 sm:px-4 shadow-sm z-10 no-print" data-t="make_today_sparkle">
+                    ✨ Make Today Sparkle!
+                </div>
+
+                <!-- 0. DAILY DASHBOARD PAGE -->
+                <div id="page-dashboard" class="planner-page flex-grow flex flex-col h-0 relative z-10">
+                    <div class="mb-3 shrink-0">
+                        <div class="flex items-center gap-1.5 text-[10px] sm:text-xs text-sky-955/65 font-bold mb-1">
+                            <i data-lucide="calendar" class="w-3.5 h-3.5 text-sky-400"></i>
+                            <span id="current-date-span">June 2026</span>
+                        </div>
+                        <h2 id="lbl-left-title" class="text-xl sm:text-2xl font-bold text-sky-955" data-t="daily_dashboard">Daily Dashboard 🎨</h2>
+                    </div>
+
+                    <!-- Inner Scrollable viewport container -->
+                    <div class="flex-grow overflow-y-auto pr-1.5 space-y-4 custom-scrollbar pb-2">
+                        <!-- Interactive Sticky Notes Panel -->
+                        <div class="bg-pastelYellow-50/70 border border-pastelYellow-200/80 rounded-2xl p-4 shadow-sm relative overflow-hidden flex flex-col min-h-[190px]">
+                            <div class="flex justify-around absolute -top-1 left-0 right-0 px-6">
+                                <span class="w-2 h-2 bg-sky-955/10 rounded-full border border-white"></span>
+                                <span class="w-2 h-2 bg-sky-955/10 rounded-full border border-white"></span>
+                                <span class="w-2 h-2 bg-sky-955/10 rounded-full border border-white"></span>
+                            </div>
+                            
+                            <div class="mt-1 mb-1.5 flex items-center justify-between">
+                                <span id="lbl-sticky-title" class="text-[10px] sm:text-xs font-bold text-sky-955/80 flex items-center gap-1" data-t="cozy_sticky_note">
+                                    📌 Cozy Sticky Note:
+                                </span>
+                                <span id="lbl-autosave-tag" class="text-[9px] text-pastelPink-300 font-bold no-print" data-t="autosaves">Auto-saves!</span>
+                            </div>
+                            <textarea id="sticky-notepad" oninput="saveStickyNote()" class="w-full flex-grow p-1 sm:p-2 text-xs bg-transparent focus:outline-none resize-none paper-lines text-sky-955 font-medium leading-[24px]" placeholder="Type cozy thoughts, reminders or list ideas here... ✨"></textarea>
+                        </div>
+
+                        <!-- Water Counter -->
+                        <div class="bg-sky-50 rounded-2xl p-3 border border-sky-100 flex items-center justify-between relative">
+                            <div class="flex items-center gap-2">
+                                <span class="text-lg sm:text-xl">💧</span>
+                                <div>
+                                    <h3 id="lbl-water-title" class="text-[10px] sm:text-xs font-bold text-sky-955" data-t="water_intake">Water Intake</h3>
+                                    <p id="lbl-water-subtitle" class="text-[9px] sm:text-[10px] text-sky-955/70" data-t="water_sub">Aim for 8 adorable glasses!</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-1 bg-white px-1.5 sm:px-2 py-1 rounded-xl border border-sky-100">
+                                <button onclick="updateWater(-1)" class="w-5 h-5 flex items-center justify-center bg-sky-100 text-sky-700 hover:bg-sky-200 rounded text-xs font-bold transition no-print">-</button>
+                                <span id="water-count" class="text-xs font-cute font-bold px-1.5 text-sky-955">0</span>
+                                <button onclick="updateWater(1)" class="w-5 h-5 flex items-center justify-center bg-sky-100 text-sky-700 hover:bg-sky-200 rounded text-xs font-bold transition no-print">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. MONTHLY PLANNER PAGE -->
+                <div id="page-monthly" class="planner-page flex-grow flex flex-col h-full overflow-y-auto custom-scrollbar hidden relative z-10">
+                    <div class="monthly-dotted-canvas rounded-2xl p-4 sm:p-5 flex flex-col relative select-text min-h-[580px] sm:min-h-[640px]">
+                        
+                        <!-- Repeating heart & circle decoration bands -->
+                        <div class="absolute inset-x-2 top-1.5 flex justify-between text-[8px] sm:text-[10px] text-purple-955/80 pointer-events-none select-none px-4">
+                            <span>♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥</span>
+                            <span>♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥</span>
+                        </div>
+                        <div class="absolute inset-x-2 bottom-1.5 flex justify-between text-[8px] sm:text-[10px] text-purple-955 pointer-events-none select-none px-4">
+                            <span>♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥</span>
+                            <span>♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥ &nbsp; ⚬ &nbsp; ♥</span>
+                        </div>
+                        <div class="absolute inset-y-4 left-2.5 flex flex-col justify-between text-[8px] sm:text-[10px] text-purple-955 pointer-events-none select-none">
+                            <span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span>
+                        </div>
+                        <div class="absolute inset-y-4 right-2.5 flex flex-col justify-between text-[8px] sm:text-[10px] text-purple-955 pointer-events-none select-none">
+                            <span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span><span>⚬</span><span>♥</span>
+                        </div>
+
+                        <!-- Pill Shaped Aesthetic Header Bar -->
+                        <div class="relative flex flex-col sm:flex-row justify-between items-center mb-4 mt-2 px-3 gap-2 shrink-0">
+                            <div class="bg-purple-100 border-2 border-purple-300 text-purple-700 text-[10px] font-bold px-3 py-1 rounded-t-lg shadow-sm font-cute tracking-wider z-10 self-start sm:self-auto">
+                                🎀 MONTHLY
+                            </div>
+
+                            <div class="bg-gradient-to-r from-pink-300 via-pink-200 to-pink-300 border-2 border-pink-400 rounded-full px-6 py-1.5 shadow-sm text-center">
+                                <span class="text-xs sm:text-sm font-bold tracking-widest text-pink-955 font-cute" data-t="cozy_calendar">MONTHLY PLANNER</span>
+                            </div>
+
+                            <div class="absolute -top-3 -right-2 text-4xl animate-pulse select-none pointer-events-none z-10">💖</div>
+
+                            <div class="flex items-center gap-1 z-10 no-print self-end sm:self-auto bg-white/90 px-2 py-0.5 rounded-xl border border-purple-200 shadow-sm">
+                                <span id="lbl-calendar-month-tag" class="text-[9px] text-purple-800 font-bold" data-t="month">Month:</span>
+                                <input type="month" id="calendar-month-select" onchange="changeCalendarMonth(this.value)" class="text-[10px] font-cute py-0.5 px-1 cursor-pointer border-0 bg-transparent focus:ring-0">
+                            </div>
+                        </div>
+
+                        <!-- Calendar Sunday to Saturday grid headers -->
+                        <div class="grid grid-cols-7 gap-1 text-center text-[8px] sm:text-[9px] font-bold text-sky-955/80 mb-1.5 px-2 shrink-0">
+                            <span class="bg-[#FAEAEF] border border-[#EBEAF6] rounded-lg py-1 shadow-sm font-cute">SUNDAY</span>
+                            <span class="bg-[#EBEAF6] border border-[#EBEAF6] rounded-lg py-1 shadow-sm font-cute">MONDAY</span>
+                            <span class="bg-[#F9E6E6] border border-[#EBEAF6] rounded-lg py-1 shadow-sm font-cute">TUESDAY</span>
+                            <span class="bg-[#E3EFF5] border border-[#EBEAF6] rounded-lg py-1 shadow-sm font-cute">WEDNESDAY</span>
+                            <span class="bg-[#EEF6E8] border border-[#EBEAF6] rounded-lg py-1 shadow-sm font-cute">THURSDAY</span>
+                            <span class="bg-[#F5E6F7] border border-[#EBEAF6] rounded-lg py-1 shadow-sm font-cute">FRIDAY</span>
+                            <span class="bg-[#F9EAEB] border border-[#EBEAF6] rounded-lg py-1 shadow-sm font-cute">SATURDAY</span>
+                        </div>
+
+                        <!-- Calendar grid -->
+                        <div id="calendar-days-grid" class="grid grid-cols-7 gap-1 sm:gap-1.5 px-2 mb-4"></div>
+
+                        <!-- Notes section -->
+                        <div class="px-2 mt-auto shrink-0 z-10">
+                            <div class="bg-gradient-to-r from-pink-300 via-pink-200 to-pink-300 text-center py-1 rounded-t-xl border-x border-t border-pink-400 flex items-center justify-center gap-1.5 shadow-sm">
+                                <span class="text-xs font-bold tracking-widest text-pink-955 uppercase font-cute">N O T E S</span>
+                            </div>
+                            <textarea id="monthly-notes-textarea" oninput="saveMonthlyNotes()" class="w-full text-xs p-3 rounded-b-xl border-x border-b border-pink-300 focus:outline-none focus:ring-1 focus:ring-pink-300 resize-none h-28 text-sky-955 notes-dotted-lines bg-white placeholder-sky-955/40" placeholder="Type cozy notes, reminders, or special highlights here... 🌸"></textarea>
+                        </div>
+
+                        <!-- Mini Day Diary Box with Editable Date -->
+                        <div class="mx-2 mt-4 p-2.5 sm:p-3 rounded-2xl border border-purple-200 bg-white/90 shadow-sm z-10">
+                            <div class="flex items-center justify-between mb-1.5 flex-wrap gap-1">
+                                <span id="lbl-diary-header" class="text-[10px] sm:text-xs font-bold text-sky-955 flex items-center gap-1" data-t="day_journal">
+                                    ✍️ Day Journal:
+                                </span>
+                                <input type="date" id="diary-date-select" onchange="changeDiaryDate(this.value)" class="p-0.5 text-[10px] font-cute rounded border border-purple-200 focus:outline-none cursor-pointer">
+                            </div>
+                            <textarea id="diary-content" oninput="saveSelectedDiaryDay()" class="w-full text-xs p-2 rounded-xl bg-white/70 border border-purple-200 focus:outline-none focus:ring-1 focus:ring-purple-300 resize-none h-16 text-sky-955 placeholder-sky-955/50"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. TO DO LIST PLANNER -->
+                <div id="page-todo" class="planner-page flex-grow flex flex-col h-full overflow-y-auto custom-scrollbar hidden relative z-10 text-rose-900">
+                    <div class="flex flex-col flex-grow bg-white rounded-2xl border-4 border-[#F472B6]/60 relative shadow-md min-h-[580px] sm:min-h-[660px] overflow-x-hidden">
+                        
+                        <!-- Top Header Section: TO DO LIST -->
+                        <div class="relative w-full p-4 sm:p-6 bg-rose-50/20 shrink-0 select-text flex flex-col items-center">
+                            <div class="absolute top-2 left-2 sm:left-4 select-none pointer-events-none z-10 flex flex-col gap-1">
+                                <span class="text-rose-400 text-lg sm:text-xl animate-pulse">💖</span>
+                                <span class="text-rose-400 text-xs sm:text-sm">💖</span>
+                            </div>
+                            <div class="absolute top-2 right-4 sm:right-6 select-none pointer-events-none z-10">
+                                <svg class="w-14 h-14 sm:w-16 sm:h-16 text-rose-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 35 C38 25, 30 35, 50 35 Z M50 35 C62 25, 70 35, 50 35 Z" stroke="currentColor" stroke-width="2.5" fill="#FFE4E6"/>
+                                    <path d="M50 35 C42 15, 30 18, 38 28 C45 35, 50 35, 50 35 Z" stroke="currentColor" stroke-width="2.5" fill="#FECDD3"/>
+                                    <path d="M50 35 C58 15, 70 18, 62 28 C55 35, 50 35, 50 35 Z" stroke="currentColor" stroke-width="2.5" fill="#FECDD3"/>
+                                    <circle cx="50" cy="35" r="4.5" fill="currentColor"/>
+                                    <path d="M50 35 Q60 55, 68 58" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    <path d="M50 35 Q40 52, 34 56" stroke="currentColor" stroke-width="2" fill="none"/>
+                                    <circle cx="68" cy="62" r="11" fill="#FB7185" stroke="currentColor" stroke-width="2"/>
+                                    <circle cx="32" cy="60" r="11" fill="#FB7185" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M64 58 A 4 4 0 0 1 72 58" stroke="white" stroke-width="1.8" fill="none"/>
+                                    <path d="M28 56 A 4 4 0 0 1 36 56" stroke="white" stroke-width="1.8" fill="none"/>
+                                </svg>
+                            </div>
+
+                            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-widest text-[#E11D48]/90 font-cute text-center uppercase" data-t="to_do_list_main">TO DO LIST</h2>
+                            
+                            <div class="flex items-center gap-1.5 mt-2 z-10 w-full justify-center max-w-xs">
+                                <span class="text-xs sm:text-sm font-cute italic font-bold text-rose-500" data-t="todo_date_label">Date:</span>
+                                <input type="date" id="todo-custom-date" onchange="saveTodoDate(this.value)" class="bg-transparent border-b-2 border-rose-300 font-cute text-xs text-rose-600 focus:outline-none focus:border-rose-500 px-1 py-0.5 rounded-none w-32 border-t-0 border-x-0">
+                            </div>
+                        </div>
+
+                        <!-- Card grid container -->
+                        <div class="flex-grow p-3 sm:p-5 flex flex-col gap-5 relative bg-[#FFFDF9]">
+                            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 flex-grow items-stretch">
+                                
+                                <!-- Left Column: To Do Card -->
+                                <div class="md:col-span-7 bg-white rounded-2xl border-2 border-rose-300/85 p-3.5 flex flex-col justify-between shadow-sm min-h-[300px]">
+                                    <div>
+                                        <div class="text-center pb-2 mb-3 border-b-2 border-rose-200">
+                                            <span class="text-sm font-bold tracking-widest text-rose-600 font-cute italic">To Do</span>
+                                        </div>
+
+                                        <div class="flex gap-1.5 mb-3 no-print">
+                                            <input type="text" id="todo-input-cute" class="w-full p-2 text-xs bg-rose-50/50 border border-rose-200 rounded-xl focus:outline-none ring-1 ring-rose-400 text-rose-955 font-medium" placeholder="What will you do cozy today? 🌸">
+                                            <button onclick="addTodoItemCute()" class="bg-rose-400 hover:bg-rose-500 text-white font-cute font-bold text-xs py-2 px-3.5 rounded-xl transition shrink-0" data-t="add_task">Add Task</button>
+                                        </div>
+
+                                        <div class="space-y-2 max-h-[220px] overflow-y-auto custom-scrollbar pr-1" id="todo-cute-list-container"></div>
+                                    </div>
+                                    
+                                    <div class="text-[9px] text-rose-400/80 font-bold italic pt-2 text-center" data-t="tap_cherry_bullet">
+                                        🍒 Tap cherry bullets to complete tasks!
+                                    </div>
+                                </div>
+
+                                <!-- Right Column: Goals & Priorities -->
+                                <div class="md:col-span-5 flex flex-col gap-4">
+                                    <div class="bg-white rounded-2xl border-2 border-rose-300/80 p-3.5 relative shadow-sm flex-grow flex flex-col min-h-[140px]">
+                                        <div class="absolute -top-3.5 left-1/2 transform -translate-x-1/2 text-xl select-none pointer-events-none">🎀</div>
+                                        <div class="text-center mb-1">
+                                            <span class="text-xs font-bold tracking-wider text-rose-600 font-cute italic">Goals</span>
+                                        </div>
+                                        <textarea id="todo-goals" oninput="saveTodoGoals()" class="w-full flex-grow text-xs p-1 bg-transparent focus:outline-none resize-none leading-relaxed text-rose-955 font-medium placeholder-rose-300/70" placeholder="Type lovely dreams or goals for the month... ⭐"></textarea>
+                                    </div>
+
+                                    <div class="bg-white rounded-2xl border-2 border-rose-300/80 p-3.5 relative shadow-sm flex flex-col h-[130px]">
+                                        <div class="absolute -top-3 -right-1 text-2xl select-none pointer-events-none">🍒</div>
+                                        <div class="text-center mb-1">
+                                            <span class="text-xs font-bold tracking-wider text-rose-600 font-cute italic">Top Priorities</span>
+                                        </div>
+                                        <textarea id="todo-priorities" oninput="saveTodoPriorities()" class="w-full flex-grow text-xs p-1 bg-transparent focus:outline-none resize-none leading-relaxed text-rose-955 font-medium placeholder-rose-300/70" placeholder="Type urgent priorities to track... 💖"></textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Gingham Checkerboard bottom sheet -->
+                        <div class="pink-gingham p-3 sm:p-5 border-t-4 border-[#F472B6]/60 shrink-0 flex flex-col relative min-h-[140px]">
+                            <div class="absolute -top-6 left-3 select-none pointer-events-none z-10">
+                                <svg class="w-14 h-14 text-rose-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M50 35 C38 25, 30 35, 50 35 Z M50 35 C62 25, 70 35, 50 35 Z" stroke="currentColor" stroke-width="2" fill="#FFE4E6"/>
+                                    <circle cx="50" cy="35" r="3.5" fill="currentColor"/>
+                                    <path d="M50 35 Q60 55, 68 58" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                                    <path d="M50 35 Q40 52, 34 56" stroke="currentColor" stroke-width="1.8" fill="none"/>
+                                    <circle cx="68" cy="62" r="9" fill="#FB7185" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle cx="32" cy="60" r="9" fill="#FB7185" stroke="currentColor" stroke-width="1.5"/>
+                                </svg>
+                            </div>
+
+                            <div class="bg-white rounded-xl border-2 border-rose-300 p-3 flex flex-col justify-between shadow-sm flex-grow relative overflow-hidden">
+                                <div class="text-center border-b border-rose-100 pb-0.5 mb-1 shrink-0">
+                                    <span class="text-xs font-bold text-rose-600 font-cute italic">Notes</span>
+                                </div>
+                                
+                                <div class="flex items-start gap-4 flex-grow relative">
+                                    <textarea id="todo-notes" oninput="saveTodoNotes()" class="w-full text-xs p-1 bg-transparent focus:outline-none resize-none leading-relaxed text-rose-955 font-medium placeholder-rose-300/70 h-16 pr-16" placeholder="Type warm reminders or thoughts here... 🍰"></textarea>
+                                    
+                                    <!-- Heart-shaped Shortcake SVG Graphic -->
+                                    <div class="absolute right-0 bottom-0 select-none pointer-events-none z-10 opacity-90">
+                                        <svg class="w-14 h-14 text-rose-400" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M50 15 C45 8, 38 12, 50 15 Z M50 15 C55 8, 62 12, 50 15 Z" stroke="currentColor" stroke-width="1.5" fill="#FFE4E6"/>
+                                            <circle cx="50" cy="15" r="2" fill="currentColor"/>
+                                            <path d="M50 30 C20 10, 10 45, 50 78 C90 45, 80 10, 50 30 Z" fill="#FFE4E6" stroke="currentColor" stroke-width="2"/>
+                                            <path d="M22 35 C38 48, 62 48, 78 35" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2" fill="none"/>
+                                            <path d="M25 45 C40 55, 60 55, 75 45" stroke="#FB7185" stroke-width="3" fill="none"/>
+                                            <path d="M50 48 C46 44, 42 46, 50 56 C58 46, 54 44, 50 48 Z" fill="#E11D48" stroke="currentColor" stroke-width="1"/>
+                                            <circle cx="50" cy="74" r="3.5" fill="white" stroke="currentColor" stroke-width="1"/>
+                                            <circle cx="40" cy="65" r="3" fill="white" stroke="currentColor" stroke-width="1"/>
+                                            <circle cx="60" cy="65" r="3" fill="white" stroke="currentColor" stroke-width="1"/>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 3. WEEKLY PLANNER PAGE -->
+                <div id="page-weekly" class="planner-page flex-grow flex flex-col h-0 hidden relative z-10 pink-grid rounded-xl p-3 sm:p-4 border-2 border-[#5C2C16]">
+                    <div class="flex items-center justify-between gap-2 shrink-0 pb-2 mb-2 border-b border-[#5C2C16]/20 no-print">
+                        <div class="flex items-center gap-1">
+                            <span id="lbl-weekly-week-tag" class="text-[9px] sm:text-[10px] text-[#5C2C16] font-bold" data-t="week_of">Week of (Mon):</span>
+                            <input type="date" id="weekly-week-select" onchange="changeWeeklyWeek(this.value)" class="text-[10px] font-cute cursor-pointer">
+                        </div>
+                        <span class="text-[10px] text-[#5C2C16]/60 font-bold">🌸 a6694f06bda10653e12ba91b86c806e9.jpg printable style</span>
+                    </div>
+
+                    <div class="flex-grow overflow-y-auto pr-1.5 custom-scrollbar space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start pb-2 border-b-2 border-dashed border-[#5C2C16]/30">
+                            
+                            <div class="md:col-span-6 relative pt-2 pb-4">
+                                <div class="absolute inset-0 bg-[#F29492]/80 rounded-lg transform translate-x-1.5 translate-y-1.5 border-2 border-[#5C2C16] z-0"></div>
+                                <div class="relative bg-white border-2 border-[#5C2C16] p-3 rounded-lg z-10 text-center flex flex-col justify-center min-h-[70px]">
+                                    <h2 id="weekly-title-print" class="text-xl sm:text-2xl font-bold text-[#5C2C16] leading-none tracking-wide" data-t="weekly_planner_title">Weekly Planner</h2>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-6 bg-white/70 border-2 border-[#5C2C16] rounded-xl p-2.5 shadow-[2px_2px_0px_0px_rgba(92,44,22,1)]">
+                                <div class="flex justify-between items-center mb-1 border-b border-[#5C2C16]/20 pb-1">
+                                    <span class="text-[10px] font-bold text-[#5C2C16] tracking-wide" data-t="habit_tracker_title">HABIT TRACKER</span>
+                                    <div class="flex gap-[4.5px] text-[8px] font-bold text-[#5C2C16]/80 text-center w-[120px] justify-between">
+                                        <span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span>
+                                    </div>
+                                </div>
+                                <div id="weekly-habits-container" class="space-y-1.5"></div>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6 pt-2 pb-4" id="weekly-days-grid-container"></div>
+                    </div>
+                </div>
+
+                <!-- 5. BUDGET PLANNER -->
+                <div id="page-budget" class="planner-page flex-grow flex flex-col h-0 hidden relative z-10">
+                    <div class="flex items-center justify-between border-b-2 border-pastelYellow-200 pb-1.5 mb-3 shrink-0">
+                        <h2 id="lbl-tab-budget-title" class="text-base sm:text-lg md:text-xl font-bold text-sky-955 flex items-center gap-1.5" data-t="budget_savings">
+                            <span>👛</span> Budget & Savings
+                        </h2>
+                        <span id="lbl-tab-budget-sub" class="text-[10px] sm:text-xs text-sky-700 font-bold" data-t="track_in_rm">Track in RM</span>
+                    </div>
+
+                    <div class="flex-grow overflow-y-auto pr-1.5 space-y-4 custom-scrollbar pb-2">
+                        <div class="grid grid-cols-3 gap-1.5">
+                            <div class="bg-emerald-50 p-2 rounded-xl border border-emerald-100 text-center flex flex-col justify-between">
+                                <div>
+                                    <div id="lbl-budget-income-tag" class="text-[8px] sm:text-[9px] font-bold text-emerald-800" data-t="total_income">Total Income</div>
+                                    <div id="budget-total-income" class="text-[10px] sm:text-xs font-cute font-bold text-emerald-900">RM0.00</div>
+                                </div>
+                                <div class="text-[7px] text-emerald-700/80 border-t border-emerald-100 mt-1 pt-1 flex flex-col text-left font-cute leading-tight">
+                                    <span id="sub-inc-cash">💵 Cash: RM0</span>
+                                    <span id="sub-inc-online">📱 Online: RM0</span>
+                                </div>
+                            </div>
+                            <div class="bg-rose-50 p-2 rounded-xl border border-rose-100 text-center flex flex-col justify-between">
+                                <div>
+                                    <div id="lbl-budget-expense-tag" class="text-[8px] sm:text-[9px] font-bold text-rose-800" data-t="expenses">Expenses</div>
+                                    <div id="budget-total-expenses" class="text-[10px] sm:text-xs font-cute font-bold text-rose-900">RM0.00</div>
+                                </div>
+                                <div class="text-[7px] text-rose-700/80 border-t border-rose-100 mt-1 pt-1 flex flex-col text-left font-cute leading-tight">
+                                    <span id="sub-exp-cash">💵 Cash: RM0</span>
+                                    <span id="sub-exp-online">📱 Online: RM0</span>
+                                </div>
+                            </div>
+                            <div class="bg-sky-50 p-2 rounded-xl border border-sky-100 text-center flex flex-col justify-between">
+                                <div>
+                                    <div id="lbl-budget-savings-tag" class="text-[8px] sm:text-[9px] font-bold text-sky-800" data-t="savings">Savings</div>
+                                    <div id="budget-net-savings" class="text-[10px] sm:text-xs font-cute font-bold text-sky-900">RM0.00</div>
+                                </div>
+                                <div class="text-[7px] text-sky-700/80 border-t border-sky-100 mt-1 pt-1 flex flex-col text-left font-cute leading-tight">
+                                    <span id="sub-sav-cash">💵 Cash: RM0</span>
+                                    <span id="sub-sav-online">📱 Online: RM0</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-sky-50/50 p-2.5 sm:p-3 rounded-2xl border border-sky-100 flex flex-col gap-2 no-print">
+                            <input type="text" id="budget-desc" class="w-full p-2 text-xs bg-white border border-sky-100 rounded-lg focus:outline-none">
+                            <div class="grid grid-cols-3 gap-2">
+                                <input type="number" step="0.01" id="budget-amount" class="w-full p-2 text-xs bg-white border border-sky-100 rounded-lg focus:outline-none">
+                                <select id="budget-type" class="w-full p-2 text-[11px] sm:text-xs bg-white border border-sky-100 rounded-lg focus:outline-none text-sky-955 font-bold">
+                                    <option value="income" id="opt-income" data-t="income_opt">➕ Income</option>
+                                    <option value="expense" id="opt-expense" data-t="expense_opt">➖ Expense</option>
+                                </select>
+                                <select id="budget-method" class="w-full p-2 text-[11px] sm:text-xs bg-white border border-sky-100 rounded-lg focus:outline-none text-sky-955 font-bold">
+                                    <option value="cash" id="opt-cash" data-t="cash_opt">💵 Cash</option>
+                                    <option value="online" id="opt-online" data-t="online_opt">📱 Online Transfer</option>
+                                </select>
+                            </div>
+                            <div class="flex gap-2 items-center justify-between">
+                                <div class="flex items-center gap-1 bg-white px-2 py-1 rounded-lg border border-sky-100/60 flex-grow">
+                                    <span id="lbl-budget-tx-tag" class="text-[9px] font-bold text-sky-800 shrink-0" data-t="tx_date">Tx Date:</span>
+                                    <input type="date" id="budget-date-input" class="p-0.5 text-[10px] font-cute border-0 w-full focus:ring-0">
+                                </div>
+                                <button id="lbl-budget-save-btn" onclick="addBudgetEntry()" class="bg-sky-400 hover:bg-sky-500 text-white font-bold text-xs py-2 px-6 rounded-lg transition shadow-sm shrink-0" data-t="save_entry">Save Entry</button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-1.5" id="budget-ledger-container"></div>
+                    </div>
+                </div>
+
+                <!-- 13. SAVINGS TRACKER (SWEET SAVINGS JAR) -->
+                <div id="page-savings" class="planner-page flex-grow flex flex-col h-0 hidden relative z-10">
+                    <div class="flex items-center justify-between border-b-2 border-sky-200 pb-1.5 mb-3 gap-2 shrink-0">
+                        <h2 id="lbl-tab-savings-title" class="text-base sm:text-lg md:text-xl font-bold text-sky-955 flex items-center gap-1.5" data-t="sweet_savings_jar">
+                            <span>🍯</span> Sweet Savings Jar
+                        </h2>
+                        <span id="lbl-tab-savings-sub" class="text-[10px] sm:text-xs text-sky-600 font-bold" data-t="savings_subtitle">Drop money love stickers to fill up your jar!</span>
+                    </div>
+
+                    <div class="flex-grow overflow-y-auto pr-1.5 space-y-4 custom-scrollbar pb-2">
+                        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                            
+                            <div class="md:col-span-6 flex flex-col items-center justify-center p-3 bg-sky-50/30 rounded-2xl border border-sky-100/40 relative">
+                                <div class="relative w-64 flex flex-col items-center mt-3">
+                                    <div class="absolute -top-1 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none text-2xl animate-pulse">🎀</div>
+                                    <div class="w-24 h-5 bg-gradient-to-r from-amber-800 to-amber-700 rounded-t-lg shadow-sm border-b-2 border-amber-955/40 z-10"></div>
+                                    <div class="w-18 h-3.5 bg-white/40 border-x-2 border-white/60 shadow-[inset_0_2px_4px_rgba(255,255,255,0.3)] z-10"></div>
+                                    
+                                    <div id="savings-jar-body" class="w-56 h-60 bg-gradient-to-b from-white/20 to-white/40 border-4 border-white/80 rounded-b-[4.5rem] rounded-t-3xl shadow-[inset_0_4px_16px_rgba(255,255,255,0.8),0_12px_24px_rgba(3,105,161,0.06)] relative overflow-hidden backdrop-blur-[1px]">
+                                        <div class="absolute left-3 top-10 bottom-12 flex flex-col justify-between text-[8px] text-sky-955/20 font-bold font-cute pointer-events-none select-none">
+                                            <span>—— Full ✨</span>
+                                            <span>—— Half 🍯</span>
+                                            <span>—— Cute Start 🌱</span>
+                                        </div>
+                                        <div id="jar-stickers-container" class="absolute inset-0 w-full h-full pointer-events-auto"></div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 text-center">
+                                    <span id="lbl-savings-total-tag" class="text-[10px] sm:text-xs font-bold text-sky-900/70" data-t="total_saved_label">Total Coins Saved:</span>
+                                    <div class="flex items-center justify-center gap-1.5 mt-1">
+                                        <span class="text-xl animate-bounce">🪙</span>
+                                        <span id="savings-jar-total-val" class="text-lg sm:text-xl font-cute font-bold text-sky-955 bg-pastelYellow-100 border border-pastelYellow-200 px-3 py-1 rounded-2xl shadow-sm">RM0.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md:col-span-6 space-y-4">
+                                <div class="bg-white p-4 rounded-2xl border border-sky-100 shadow-sm space-y-3">
+                                    <div class="flex items-center gap-1.5 border-b border-sky-50 pb-2 mb-2">
+                                        <span>🎨</span>
+                                        <span class="text-xs font-bold text-sky-955">Money Love Sticker Sheet</span>
+                                    </div>
+                                    <p class="text-[10px] sm:text-xs text-sky-955/65 font-medium leading-relaxed" data-t="savings_instructions">
+                                        Click/tap a lovely sticker below to stick it into your savings jar! Tap any stuck sticker inside the jar to cash it out or spend it. 🌸
+                                    </p>
+
+                                    <div class="grid grid-cols-3 gap-2">
+                                        <button onclick="addSavingsSticker(1)" class="cute-hover bg-amber-50 hover:bg-amber-100 border border-amber-200 p-2 rounded-2xl flex flex-col items-center justify-center transition shadow-sm relative group">
+                                            <span class="text-xl group-hover:animate-bounce">💖</span>
+                                            <span class="text-[10px] font-bold text-amber-800 mt-1">RM1</span>
+                                        </button>
+                                        <button onclick="addSavingsSticker(5)" class="cute-hover bg-rose-50 hover:bg-rose-100 border border-rose-200 p-2 rounded-2xl flex flex-col items-center justify-center transition shadow-sm relative group">
+                                            <span class="text-xl group-hover:animate-bounce">🌸</span>
+                                            <span class="text-[10px] font-bold text-rose-800 mt-1">RM5</span>
+                                        </button>
+                                        <button onclick="addSavingsSticker(10)" class="cute-hover bg-sky-50 hover:bg-sky-100 border border-sky-200 p-2 rounded-2xl flex flex-col items-center justify-center transition shadow-sm relative group">
+                                            <span class="text-xl group-hover:animate-bounce">⭐</span>
+                                            <span class="text-[10px] font-bold text-sky-800 mt-1">RM10</span>
+                                        </button>
+                                        <button onclick="addSavingsSticker(20)" class="cute-hover bg-emerald-50 hover:bg-emerald-100 border border-emerald-200 p-2 rounded-2xl flex flex-col items-center justify-center transition shadow-sm relative group">
+                                            <span class="text-xl group-hover:animate-bounce">🍀</span>
+                                            <span class="text-[10px] font-bold text-emerald-800 mt-1">RM20</span>
+                                        </button>
+                                        <button onclick="addSavingsSticker(50)" class="cute-hover bg-violet-50 hover:bg-violet-100 border border-violet-200 p-2 rounded-2xl flex flex-col items-center justify-center transition shadow-sm relative group">
+                                            <span class="text-xl group-hover:animate-bounce">🎀</span>
+                                            <span class="text-[10px] font-bold text-violet-800 mt-1">RM50</span>
+                                        </button>
+                                        <button onclick="addSavingsSticker(100)" class="cute-hover bg-yellow-50 hover:bg-yellow-100 border border-yellow-200 p-2 rounded-2xl flex flex-col items-center justify-center transition shadow-sm relative group">
+                                            <span class="text-xl group-hover:animate-bounce">👑</span>
+                                            <span class="text-[10px] font-bold text-amber-900 mt-1">RM100</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <button onclick="clearSavingsJar()" class="w-full text-rose-400 hover:text-rose-600 hover:bg-rose-50 font-bold text-xs px-3 py-2.5 rounded-xl border border-rose-100 transition flex items-center justify-center gap-1 shadow-sm no-print">
+                                    <span>🧼</span>
+                                    <span data-t="clear_jar_btn">Empty Savings Jar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 6. MEAL PLANNER -->
+                <div id="page-meals" class="planner-page flex-grow flex flex-col h-0 hidden relative z-10">
+                    <div class="flex items-center justify-between border-b-2 border-sky-200 pb-1.5 mb-3 gap-2 shrink-0">
+                        <h2 id="lbl-tab-meals-title" class="text-base sm:text-lg md:text-xl font-bold text-sky-955 flex items-center gap-1.5" data-t="kawaii_meal_menu">
+                            <span>🥞</span> Kawaii Meal Menu
+                        </h2>
+                        <div class="flex items-center gap-1">
+                            <span id="lbl-meals-week-tag" class="text-[9px] text-sky-700 font-bold" data-t="week_of">Week of (Mon):</span>
+                            <input type="date" id="meals-week-select" onchange="changeMealsWeek(this.value)" class="text-[10px] font-cute cursor-pointer">
+                        </div>
+                    </div>
+
+                    <div class="flex-grow overflow-y-auto pr-1.5 space-y-4 custom-scrollbar pb-2">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 bg-pastelYellow-50/50 p-2.5 sm:p-3 rounded-2xl border border-pastelYellow-100 no-print">
+                            <div class="sm:col-span-2">
+                                <select id="meal-day-select" class="p-1.5 w-full bg-white text-xs border border-sky-100 rounded-lg font-bold text-sky-955">
+                                    <option value="Mon">Monday Menu</option>
+                                    <option value="Tue">Tuesday Menu</option>
+                                    <option value="Wed">Wednesday Menu</option>
+                                    <option value="Thu">Thursday Menu</option>
+                                    <option value="Fri">Friday Menu</option>
+                                    <option value="Sat">Saturday Menu</option>
+                                    <option value="Sun">Sunday Menu</option>
+                                </select>
+                            </div>
+                            <input type="text" id="meal-breakfast" class="p-2 text-xs bg-white border border-sky-100 rounded-lg">
+                            <input type="text" id="meal-lunch" class="p-2 text-xs bg-white border border-sky-100 rounded-lg">
+                            <input type="text" id="meal-dinner" class="p-2 text-xs bg-white border border-sky-100 rounded-lg sm:col-span-2">
+                            <button id="lbl-meals-save-btn" onclick="saveMealPlan()" class="bg-sky-400 hover:bg-sky-500 text-white font-bold text-xs py-2 rounded-lg transition sm:col-span-2" data-t="save_meal">Save Meal</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="meals-week-grid"></div>
+                    </div>
+                </div>
+
+                <!-- 9. MOVIE TRACKER -->
+                <div id="page-movies" class="planner-page flex-grow flex flex-col h-0 hidden relative z-10">
+                    <div class="flex items-center justify-between border-b-2 border-sky-200 pb-1.5 mb-3 shrink-0">
+                        <h2 id="lbl-tab-movies-title" class="text-base sm:text-lg md:text-xl font-bold text-sky-955 flex items-center gap-1.5" data-t="magic_cinema_journal">
+                            <span>🎬</span> Magic Cinema Journal
+                        </h2>
+                        <span id="lbl-tab-movies-sub" class="text-[10px] sm:text-xs text-sky-600 font-bold" data-t="reviews_ratings">Reviews & Ratings</span>
+                    </div>
+
+                    <div class="flex-grow overflow-y-auto pr-1.5 space-y-4 custom-scrollbar pb-2">
+                        <div class="bg-sky-50/50 p-2.5 sm:p-3 rounded-2xl border border-sky-100 flex flex-col gap-2 no-print">
+                            <input type="text" id="movie-title" class="p-2 text-xs bg-white border border-sky-100 rounded-lg focus:outline-none">
+                            <div class="grid grid-cols-2 gap-2">
+                                <select id="movie-rating" class="p-2 text-xs bg-white border border-sky-100 rounded-lg font-bold text-sky-955 focus:outline-none">
+                                    <option value="5">⭐⭐⭐⭐⭐ Fantastic</option>
+                                    <option value="4">⭐⭐⭐⭐ Great</option>
+                                    <option value="3">⭐⭐⭐ Good</option>
+                                    <option value="2">⭐⭐ Okay</option>
+                                    <option value="1">⭐ Bad</option>
+                                </select>
+                                <div class="flex items-center gap-1 bg-white px-2 py-1 rounded-lg border border-sky-100">
+                                    <span id="lbl-movie-watch-tag" class="text-[9px] font-bold text-sky-800" data-t="watched_date">Watched:</span>
+                                    <input type="date" id="movie-date-input" class="p-0.5 text-[10px] font-cute border-0 w-full bg-transparent">
+                                </div>
+                            </div>
+                            <button id="lbl-movie-add-btn" onclick="addMovieItem()" class="bg-sky-400 hover:bg-sky-500 text-white text-xs font-bold py-2 rounded-lg transition" data-t="add_movie">Add Movie Review</button>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3" id="movies-container"></div>
+                    </div>
+                </div>
+
+                <!-- 12. EVENT PLANNER PAGE -->
+                <div id="page-event" class="planner-page flex-grow flex flex-col h-0 hidden relative z-10">
+                    <div class="flex items-center justify-between border-b-2 border-rose-200 pb-1.5 mb-3 flex-wrap gap-2 shrink-0">
+                        <h2 id="lbl-tab-event-title" class="text-base sm:text-lg md:text-xl font-bold text-sky-955 flex items-center gap-1.5" data-t="cozy_event_planner">
+                            <span>🎉</span> Cozy Event Planner
+                        </h2>
+                        <div class="flex items-center gap-1 bg-rose-50/70 border border-rose-100/80 px-2 py-0.5 rounded-lg">
+                            <span class="text-[9px] font-bold text-rose-800" data-t="event_title_label">Active:</span>
+                            <span id="event-active-label" class="text-[10px] font-cute font-bold text-[#5C2C16]">Family Day 🏕️</span>
+                        </div>
+                    </div>
+
+                    <div class="flex-grow overflow-y-auto pr-1.5 space-y-4 custom-scrollbar pb-2">
+                        <div class="bg-rose-50/40 p-2.5 rounded-2xl border border-rose-100/60 flex flex-col gap-1.5">
+                            <div class="flex items-center gap-1.5 justify-between">
+                                <input type="text" id="event-name-input" onchange="saveEventMeta()" class="p-1.5 text-xs bg-white border border-rose-100 rounded-lg text-sky-955 font-bold focus:outline-none flex-grow">
+                                <input type="date" id="event-date-input" onchange="saveEventMeta()" class="p-1.5 text-xs bg-white border border-rose-100 rounded-lg text-sky-955 font-cute cursor-pointer max-w-[130px]">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                            <div class="bg-white p-3 rounded-2xl border border-sky-100 shadow-sm space-y-2">
+                                <div class="border-b border-sky-50 pb-1 flex justify-between items-center">
+                                    <span id="lbl-guest-list-tag" class="text-[10px] sm:text-xs font-bold text-sky-955" data-t="guest_list">Guest RSVP List</span>
+                                    <span id="guest-rsvp-count" class="text-[9px] font-cute font-bold bg-pastelYellow-100 px-1.5 rounded text-sky-955">5 RSVPs</span>
+                                </div>
+                                <div class="flex gap-1.5 no-print">
+                                    <input type="text" id="event-guest-input" placeholder="Guest Name..." class="w-full p-1.5 text-xs border border-sky-100 bg-sky-50/30 rounded-lg focus:outline-none">
+                                    <button onclick="addEventGuest()" class="bg-rose-400 hover:bg-rose-500 text-white text-xs font-bold px-2.5 rounded-lg shrink-0">+</button>
+                                </div>
+                                <div id="event-guests-container" class="space-y-1.5 max-h-[140px] overflow-y-auto custom-scrollbar"></div>
+                            </div>
+
+                            <div class="bg-white p-3 rounded-2xl border border-sky-100 shadow-sm space-y-2">
+                                <div class="border-b border-sky-50 pb-1 flex justify-between items-center">
+                                    <span id="lbl-itinerary-tag" class="text-[10px] sm:text-xs font-bold text-sky-955" data-t="itinerary">Itinerary Schedule</span>
+                                    <span class="text-[9px] font-bold text-sky-400">Time-slot</span>
+                                </div>
+                                <div class="flex gap-1 no-print">
+                                    <input type="text" id="event-itinerary-time" placeholder="09:00 AM" class="w-16 p-1.5 text-xs border border-sky-100 bg-sky-50/30 rounded-lg focus:outline-none text-center font-cute">
+                                    <input type="text" id="event-itinerary-desc" placeholder="Cozy Activity..." class="flex-grow p-1.5 text-xs border border-sky-100 bg-sky-50/30 rounded-lg focus:outline-none">
+                                    <button onclick="addEventItinerary()" class="bg-rose-400 hover:bg-rose-500 text-white text-xs font-bold px-2.5 rounded-lg shrink-0">+</button>
+                                </div>
+                                <div id="event-itinerary-container" class="space-y-1.5 max-h-[140px] overflow-y-auto custom-scrollbar font-medium"></div>
+                            </div>
+
+                            <div class="bg-pastelYellow-50/40 p-3 rounded-2xl border border-pastelYellow-200/80 shadow-sm space-y-2 sm:col-span-2">
+                                <div class="border-b border-pastelYellow-200 pb-1 flex justify-between items-center">
+                                    <span id="lbl-checklist-tag" class="text-[10px] sm:text-xs font-bold text-sky-955" data-t="supplies_checklist">Supplies & Prep Checklist</span>
+                                    <span id="event-checklist-count" class="text-[9px] font-cute font-bold text-pastelPink-300">Done: 2/4</span>
+                                </div>
+                                <div class="flex gap-1.5 no-print">
+                                    <input type="text" id="event-checklist-input" placeholder="Need to buy or prepare..." class="w-full p-1.5 text-xs border border-pastelYellow-200 bg-white rounded-lg focus:outline-none">
+                                    <button onclick="addEventChecklist()" class="bg-pastelYellow-400 hover:bg-pastelYellow-500 text-sky-955 text-xs font-bold px-4 rounded-lg shrink-0">+</button>
+                                </div>
+                                <div id="event-checklist-container" class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 max-h-[120px] overflow-y-auto custom-scrollbar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Page Footer -->
+                <div class="pt-3 border-t border-dashed border-sky-100/80 flex items-center justify-between text-[10px] sm:text-[11px] text-[#5C2C16]/70 font-medium relative z-10 mt-3 shrink-0">
+                    <span id="cute-advice" class="truncate max-w-[70%]">✨ "Take tiny, beautiful steps every single day."</span>
+                    <span class="bg-sky-100 px-2 py-0.5 rounded-lg text-sky-800 font-bold shrink-0 animate-pulse" id="planner-status-counter">Active 🌸</span>
+                </div>
+
+            </div>
+
+            <!-- THE PHYSICAL INDEX BINDER TABS -->
+            <nav class="absolute -top-11 md:top-6 left-1 right-1 md:left-auto md:-right-10 flex flex-col gap-1 z-20 no-print" id="planner-sidebar-tabs">
+                <div class="flex flex-row md:flex-col gap-[3.5px] overflow-x-auto md:overflow-x-visible pb-1 md:pb-0 scrollbar-none w-full">
+                    <button onclick="switchTab('dashboard')" id="tab-dashboard" class="tab-active text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-sky-150/80 bg-pastelYellow-200 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_dash">🧸 Dash</button>
+                    <button onclick="switchTab('monthly')" id="tab-monthly" class="text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-sky-150/80 bg-pastelYellow-100 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_mon">📅 Mon</button>
+                    <button onclick="switchTab('todo')" id="tab-todo" class="text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-sky-150/80 bg-rose-100 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_todo">📋 Todo</button>
+                    <button onclick="switchTab('weekly')" id="tab-weekly" class="text-[#5C2C16] text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border-2 border-[#5C2C16] bg-[#FFEAE9] text-left transition duration-150 shadow-sm shrink-0" data-t="tab_wkly">🌸 Wkly</button>
+                    <button onclick="switchTab('event')" id="tab-event" class="text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-rose-155 bg-rose-100 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_evt">🎉 Event</button>
+                    <button onclick="switchTab('budget')" id="tab-budget" class="text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-sky-150/80 bg-amber-100 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_budg">👛 Budg</button>
+                    <button onclick="switchTab('savings')" id="tab-savings" class="text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-sky-150/80 bg-yellow-100 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_savings">🍯 Save</button>
+                    <button onclick="switchTab('meals')" id="tab-meals" class="text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-sky-150/80 bg-orange-100 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_meal">🥞 Meal</button>
+                    <button onclick="switchTab('movies')" id="tab-movies" class="text-sky-955 text-[10px] sm:text-xs font-cute font-bold px-2.5 py-1.5 md:py-2 rounded-t-xl md:rounded-t-none md:rounded-r-xl border border-sky-150/80 bg-purple-100 text-left transition duration-150 shadow-sm shrink-0" data-t="tab_film">🎬 Film</button>
+                </div>
+            </nav>
+
+        </div>
+    </main>
+
+    <!-- Clear Cache Reset Data Utility -->
+    <footer id="planner-footer" class="hidden w-full max-w-4xl flex flex-col sm:flex-row items-center justify-between mt-6 text-[10px] sm:text-[11px] text-sky-955/60 font-medium px-4 gap-2 text-center no-print">
+        <span id="lbl-footer" data-t="footer_text">🌸 Designed to look like an authentic cute binder planner. Keep dreaming high!</span>
+        <button id="lbl-wipe" onclick="openResetModal()" class="hover:text-rose-500 underline transition duration-150 cursor-pointer" data-t="wipe_data">⚠️ Wipe Data & Start Fresh</button>
+    </footer>
+
+    <!-- Custom Safe Theme Confirm Dialog Overlay -->
+    <div id="custom-confirm-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-sky-955/40 backdrop-blur-sm no-print">
+        <div class="bg-white border-2 border-sky-200 rounded-3xl p-5 max-w-sm w-full shadow-2xl transform scale-100 transition-all text-center space-y-4">
+            <span class="text-3xl">🧸</span>
+            <h4 class="text-base font-bold text-sky-955" id="confirm-modal-title">Confirm Action</h4>
+            <p class="text-xs text-sky-900/80 leading-relaxed" id="confirm-modal-body">Are you sure you want to proceed with this lovely change?</p>
+            <div class="flex items-center gap-3 pt-2">
+                <button id="confirm-cancel-btn" onclick="closeConfirmModal(false)" class="w-1/2 py-2 text-xs font-bold text-sky-955/70 bg-sky-50 hover:bg-sky-100 rounded-xl transition">Cancel</button>
+                <button id="confirm-ok-btn" onclick="closeConfirmModal(true)" class="w-1/2 py-2 text-xs font-bold text-white bg-sky-400 hover:bg-sky-500 rounded-xl transition shadow-md">Proceed ✨</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cozy Access Key Toast Modal -->
+    <div id="recovery-alert-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-rose-950/40 backdrop-blur-sm no-print">
+        <div class="bg-white border-4 border-rose-200 rounded-3xl p-6 max-w-xs w-full shadow-2xl text-center space-y-3.5">
+            <span class="text-3xl">🧁</span>
+            <h4 class="text-sm font-bold text-rose-900">Cozy Recovery Assistant</h4>
+            <p class="text-[11px] text-rose-800 leading-relaxed">Here is your dynamic temporary bypass key. Use this to unlock instantly:</p>
+            <div class="bg-rose-50/80 border border-rose-200 px-4 py-2.5 rounded-xl font-cute font-bold text-xs text-rose-950 tracking-wider flex items-center justify-between">
+                <span id="recovery-code-display">SWEET-XXXX</span>
+                <button onclick="copyRecoveryKey()" class="text-[10px] text-rose-500 hover:text-rose-700 font-bold" id="lbl-copy-btn">Copy</button>
+            </div>
+            <button onclick="closeRecoveryAlert()" class="w-full py-2 bg-rose-400 hover:bg-rose-500 text-white font-bold text-xs rounded-xl transition">Got it! ✨</button>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                app_title: "My Sweet Life Digital Planner 🎀",
+                app_subtitle: "Your cozy responsive personal binder. Handcrafted with love 🌸",
+                mood: "Mood:",
+                stylus_on: "Stylus On",
+                stylus_off: "Stylus Off",
+                pdf_print: "PDF Print",
+                lock_binder: "Lock Binder",
+                pen_crayon: "🎨 Pen Crayon:",
+                size: "Size:",
+                undo: "↩️ Undo",
+                redo: "↪️ Redo",
+                draw: "✏️ Draw",
+                eraser: "🧽 Eraser",
+                clear_handwritings: "✨ Clear Page Markings",
+                m_dashboard: "🧸 My Dashboard",
+                m_planner: "📖 Planner Pages",
+                daily_dashboard: "Daily Dashboard 🎨",
+                make_today_sparkle: "✨ Make Today Sparkle!",
+                cozy_sticky_note: "📌 Cozy Sticky Note:",
+                autosaves: "Auto-saves!",
+                sticky_placeholder: "Type cozy thoughts, reminders, list ideas or motivational doodles here... ✨",
+                water_intake: "Water Intake",
+                water_sub: "Aim for 8 adorable glasses!",
+                tap_tabs: "✨ Tap tabs above/right to flip!",
+                cozy_calendar: "📅 Cozy Calendar",
+                month: "Month:",
+                day_journal: "✍️ Day Journal:",
+                journal_placeholder: "Type cozy logs for the chosen day...",
+                cozy_task_list: "📋 Cozy Task List",
+                check_them_off: "Check them off!",
+                due_date: "📅 Due Date:",
+                todo_placeholder: "What will you do cozy today?...",
+                add_task: "Add Task",
+                weekly_routine: "🌸 Weekly Routine",
+                weekly_planner_title: "Weekly Planner",
+                habit_tracker_title: "HABIT TRACKER",
+                week_of: "Week of (Mon):",
+                weekly_placeholder: "Add task detail...",
+                budget_savings: "👛 Budget & Savings",
+                track_in_rm: "Track in RM",
+                total_income: "Total Income",
+                expenses: "Expenses",
+                savings: "Savings",
+                budget_desc_placeholder: "Salary, Boba, Skincare...",
+                amount_placeholder: "Amount RM",
+                income_opt: "➕ Income",
+                expense_opt: "➖ Expense",
+                cash_opt: "💵 Cash",
+                online_opt: "📱 Online Transfer",
+                tx_date: "Tx Date:",
+                save_entry: "Save Entry",
+                kawaii_meal_menu: "🥞 Kawaii Meal Menu",
+                save_meal: "Save Meal",
+                meal_breakfast_placeholder: "🥞 Breakfast idea...",
+                meal_lunch_placeholder: "🍛 Lunch idea...",
+                meal_dinner_placeholder: "🍝 Dinner idea...",
+                magic_cinema_journal: "🎬 Magic Cinema Journal",
+                reviews_ratings: "Reviews & Ratings",
+                movie_title_placeholder: "Movie / Show Title...",
+                watched_date: "Watched:",
+                add_movie: "Add Movie Review",
+                footer_text: "🌸 Designed to look like an authentic cute binder planner. Keep dreaming high!",
+                wipe_data: "⚠️ Wipe Data & Start Fresh",
+                confirm_reset: "Are you sure you want to restore the cozy defaults? This will clear all drawings and entries.",
+                confirm_clear_drawings: "Delete all sweet stylus markings on this active page?",
+                tab_dash: "🧸 Dash",
+                tab_mon: "📅 Mon",
+                tab_todo: "📋 Todo",
+                tab_wkly: "🌸 Wkly",
+                tab_evt: "🎉 Event",
+                tab_budg: "👛 Budg",
+                tab_meal: "🥞 Meal",
+                tab_film: "🎬 Film",
+                advices: [
+                    "✨ 'Take tiny, beautiful steps every single day.'",
+                    "🍰 'Have a sweet treat, you deserve lovely breaks!'",
+                    "🧸 'Cozy progress is still brilliant progress.'",
+                    "🌸 'Blooming beautifully, at your own pace!'"
+                ],
+                relaxed_day: "Your day is perfectly relaxed! ☕",
+                clean_wallet: "Your cute wallet is clean & resting! ✨",
+                empty_cinema: "Keep log of sweet cinema hits!",
+                toast_active: "Active 🌸",
+                cozy_event_planner: "🎉 Cozy Event Planner",
+                event_title_label: "Active:",
+                guest_list: "Guest RSVP List",
+                itinerary: "Itinerary Schedule",
+                supplies_checklist: "Supplies & Prep Checklist",
+                canvas_swipe_hint: "↔️ Swipe bookmarks above to view more pages! 🌸",
+                tab_savings: "🍯 Save",
+                sweet_savings_jar: "Sweet Savings Jar 🍯",
+                savings_subtitle: "Track your goals! Drop money love stickers to fill up your jar.",
+                total_saved_label: "Total Coins Saved:",
+                clear_jar_btn: "Empty Savings Jar 🧼",
+                empty_jar_desc: "Your savings jar is sparkling empty! Add some love stickers below. 🌸",
+                savings_instructions: "Click/tap a lovely sticker below to stick it into your savings jar! Tap any stuck sticker inside the jar to cash it out or spend it. 🌸",
+                to_do_list_main: "To Do List 🎀",
+                todo_date_label: "Date:",
+                tap_cherry_bullet: "🍒 Click cherry bullets to complete tasks!",
+                
+                // Cover translations
+                cover_sub: "Your secure cozy digital diary 🔒",
+                sign_in: "Sign In to Owner File",
+                open_binder: "Unlock Binder",
+                create_profile: "New? Create Profile",
+                forgot_credentials: "Forgot details?",
+                sign_up: "Create Owner Profile",
+                save_profile: "Save & Register Profile",
+                back_to_signin: "Have an account? Sign In",
+                temporary_access: "Temporary Access Code",
+                enter_temp_key: "Paste or type the cozy recovery key generated for you below:",
+                bypass_signin: "Log In Instant Key",
+                thumb_desc: "Or press and hold fingerprint scanner to login",
+                cover_footer: "Designed with love & security 🌸"
+            },
+            ms: {
+                app_title: "Perancang Digital Kehidupan Manisku 🎀",
+                app_subtitle: "Fail pengurus peribadi comel anda. Dibuat penuh kasih sayang 🌸",
+                mood: "Perasaan:",
+                stylus_on: "Pen Aktif",
+                stylus_off: "Pen Padam",
+                pdf_print: "Cetak PDF",
+                lock_binder: "Kunci Binder",
+                pen_crayon: "🎨 Pensel Krayon:",
+                size: "Saiz:",
+                undo: "Undur ↩️",
+                redo: "Maju ↪️",
+                draw: "✏️ Lukis",
+                eraser: "Pemadam 🧽",
+                clear_handwritings: "✨ Padam Tulisan Halaman",
+                m_dashboard: "🧸 Papan Pemuka",
+                m_planner: "📖 Halaman Buku",
+                daily_dashboard: "Papan Pemuka Harian 🎨",
+                make_today_sparkle: "✨ Sinar Hari Ini!",
+                cozy_sticky_note: "📌 Nota Melekit Selesa:",
+                autosaves: "Auto-simpan!",
+                sticky_placeholder: "Tulis nota selesa, peringatan atau lakaran motivasi di sini... ✨",
+                water_intake: "Minum Air",
+                water_sub: "Sasar 8 gelas comel sehari!",
+                tap_tabs: "✨ Ketik tab di atas/kanan untuk selak!",
+                cozy_calendar: "📅 Kalendar Selesa",
+                month: "Bulan:",
+                day_journal: "✍️ Jurnal Harian:",
+                journal_placeholder: "Tulis log selesa untuk hari pilihan...",
+                cozy_task_list: "📋 Senarai Tugasan Comel",
+                check_them_off: "Tandakan selesai!",
+                due_date: "📅 Tarikh Akhir:",
+                todo_placeholder: "Apa perkara comel yang ingin dibuat hari ini?...",
+                add_task: "Tambah Tugas",
+                weekly_routine: "🌸 Rutin Mingguan",
+                weekly_planner_title: "Perancang Mingguan",
+                habit_tracker_title: "PENJEJAK TABIAT",
+                week_of: "Minggu (Isnin):",
+                weekly_placeholder: "Butiran tugasan...",
+                budget_savings: "👛 Belanjawan & Simpanan",
+                track_in_rm: "Jejak dalam RM",
+                total_income: "Jumlah Pendapatan",
+                expenses: "Perbelanjaan",
+                savings: "Simpanan",
+                budget_desc_placeholder: "Gaji, Boba, Penjagaan Kulit...",
+                amount_placeholder: "Jumlah RM",
+                income_opt: "➕ Pendapatan",
+                expense_opt: "➖ Perbelanjaan",
+                cash_opt: "💵 Tunai",
+                online_opt: "📱 Pindahan Atas Talian",
+                tx_date: "Tarikh Tx:",
+                save_entry: "Simpan Rekod",
+                kawaii_meal_menu: "🥞 Menu Makanan Kawaii",
+                save_meal: "Simpan Menu",
+                meal_breakfast_placeholder: "🥞 Idea sarapan...",
+                meal_lunch_placeholder: "🍛 Idea makan tengahari...",
+                meal_dinner_placeholder: "🍝 Idea makan malam...",
+                magic_cinema_journal: "🎬 Jurnal Pawagam Magik",
+                reviews_ratings: "Ulasan & Penarafan",
+                movie_title_placeholder: "Tajuk Filem / Rancangan...",
+                watched_date: "Ditonton:",
+                add_movie: "Tambah Ulasan",
+                footer_text: "🌸 Direka menyerupai perancang binder comel yang tulen. Terus impikan kejayaan tinggi!",
+                wipe_data: "⚠️ Padam Semua Data & Mula Baru",
+                confirm_reset: "Adakah anda pasti mahu memulihkan tetapan asal selesa? Semua tulisan tangan & rekod akan dipadam.",
+                confirm_clear_drawings: "Padam semua lakaran stylus pada halaman ini?",
+                tab_dash: "🧸 Dash",
+                tab_mon: "📅 Buln",
+                tab_todo: "📋 Tugas",
+                tab_wkly: "🌸 Mingg",
+                tab_evt: "🎉 Acara",
+                tab_budg: "👛 Bajt",
+                tab_meal: "🥞 Makan",
+                tab_film: "🎬 Filem",
+                advices: [
+                    "✨ 'Ambil langkah kecil yang indah setiap hari.'",
+                    "🍰 'Makan snek manis, anda berhak mendapat rehat!'",
+                    "🧸 'Kemajuan selesa tetap satu kemajuan hebat.'"
+                ],
+                relaxed_day: "Hari anda sangat santai! ☕",
+                clean_wallet: "Dompet comel anda bersih & berehat! ✨",
+                empty_cinema: "Simpan rekod filem kegemaran comel anda!",
+                toast_active: "Aktif 🌸",
+                cozy_event_planner: "🎉 Perancang Acara Selesa",
+                event_title_label: "Aktif:",
+                guest_list: "Senarai Kehadiran Tetamu",
+                itinerary: "Jadual Atur Cara",
+                supplies_checklist: "Senarai Bekalan & Persediaan",
+                canvas_swipe_hint: "↔️ Selak penanda buku di atas untuk halaman lain! 🌸",
+                tab_savings: "🍯 Simp",
+                sweet_savings_jar: "Balang Simpanan Manis 🍯",
+                savings_subtitle: "Jejak sasaran comel anda! Masukkan pelekat cinta wang untuk memenuhi balang.",
+                total_saved_label: "Jumlah Wang Disimpan:",
+                clear_jar_btn: "Kosongkan Balang 🧼",
+                empty_jar_desc: "Balang simpanan anda bersih berkilat & kosong! Tambah pelekat comel di bawah. 🌸",
+                savings_instructions: "Ketik pelekat cinta wang di bawah untuk memasukkan ke dalam balang simpanan anda! Ketik pelekat di dalam balang jika ingin mengeluarkan wang. 🌸",
+                to_do_list_main: "Senarai Tugas 🎀",
+                todo_date_label: "Tarikh:",
+                tap_cherry_bullet: "🍒 Ketik butir ceri untuk tanda selesai tugas!",
+                
+                // Cover translations
+                cover_sub: "Diari digital comel anda yang selamat 🔒",
+                sign_in: "Log Masuk ke Fail Pemilik",
+                open_binder: "Buka Binder",
+                create_profile: "Baru? Bina Profil",
+                forgot_credentials: "Lupa maklumat?",
+                sign_up: "Bina Profil Pemilik",
+                save_profile: "Simpan & Daftar Profil",
+                back_to_signin: "Ada akaun? Log Masuk",
+                temporary_access: "Kod Akses Sementara",
+                enter_temp_key: "Tampal atau taip kunci akses sementara anda di bawah:",
+                bypass_signin: "Log Masuk Kunci Segera",
+                thumb_desc: "Atau tekan & tahan pengimbas cap jari untuk masuk",
+                cover_footer: "Direka dengan penuh cinta & keselamatan 🌸"
+            }
+        };
+
+        const defaultPlannerData = {
+            lang: "en",
+            mood: "😊",
+            water: 4,
+            stickyNote: "Welcome to your sweet life diary! 🌸\n\n✨ Fill up plans in the tabs on the right.\n✨ Crayon Pen stylus tools are active on every page!\n✨ Enjoy planning your lovely milestones.",
+            currentMonth: "2026-06",
+            diaryDate: "2026-06-23",
+            weeklyWeek: "2026-06-22",
+            mealsWeek: "2026-06-22",
+            currentTab: "dashboard",
+            todoDate: "2026-06-23",
+            todoGoals: "⭐ Drink organic matcha latte\n⭐ Do early afternoon stretches\n⭐ Create a cozy watercolor draft",
+            todoPriorities: "💖 Deliver digital prototype\n💖 Buy sweet strawberries & cream 🍓",
+            todoNotes: "Keep smiling through lovely efforts! 🍰✨",
+            diary: {
+                "2026-06-22": "Bought strawberries and went to the park! 🍓🌸",
+                "2026-06-23": "Designed a colorful canvas palette!"
+            },
+            monthlyNotes: {
+                "2026-06": "Lovely month to bloom beautiful thoughts! ✨\nRemember to stretch and drink matcha tea."
+            },
+            todos: [
+                { id: 1, text: "Buy strawberry boba tea 🍹", done: false, date: "2026-06-23" },
+                { id: 2, text: "Design a watercolor website palette 🎨", done: true, date: "2026-06-22" },
+                { id: 3, text: "Bake fresh cherry ribbon pies 🥧", done: false, date: "2026-06-23" }
+            ],
+            weekly: {
+                "2026-06-22": {
+                    days: {
+                        "Mon": [
+                            { text: "Start the week with stretches! ✨", done: true },
+                            { text: "Water the indoor garden plants 🌿", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false }
+                        ],
+                        "Tue": [
+                            { text: "Update savings ledger 👛", done: true },
+                            { text: "", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false }
+                        ],
+                        "Wed": [
+                            { text: "Midweek movie marathon", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false }
+                        ],
+                        "Thu": [
+                            { text: "Water succulent plants 🪴", done: false },
+                            { text: "Organize planner sheets", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false }
+                        ],
+                        "Fri": [
+                            { text: "Progress checkpoint", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false }
+                        ],
+                        "Sat": [
+                            { text: "Clean aesthetic desk corner!", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false }
+                        ],
+                        "Sun": [
+                            { text: "Write next week's cute planner", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false },
+                            { text: "", done: false }
+                        ]
+                    },
+                    habits: [
+                        { name: "Drink Water 💧", done: [true, true, false, false, false, false, false] },
+                        { name: "Early Sleep 😴", done: [false, true, false, false, false, false, false] },
+                        { name: "Healthy Eat 🥞", done: [true, false, false, false, false, false, false] }
+                    ]
+                }
+            },
+            budget: [
+                { id: 1, desc: "Allowance / Part-time Pay 🌸", amount: 500.00, type: "income", method: "online", date: "2026-06-01" },
+                { id: 2, desc: "Cute Matcha Boba & Pastry", amount: 28.50, type: "expense", method: "cash", date: "2026-06-23" }
+            ],
+            savings: {
+                stickers: [
+                    { id: 1, denom: 10, x: 25, y: 15, rot: -12 },
+                    { id: 2, denom: 50, x: 60, y: 20, rot: 18 },
+                    { id: 3, denom: 5, x: 42, y: 35, rot: -5 },
+                    { id: 4, denom: 100, x: 30, y: 50, rot: 30 },
+                    { id: 5, denom: 1, x: 55, y: 55, rot: -22 }
+                ]
+            },
+            meals: {
+                "2026-06-22": {
+                    "Mon": { breakfast: "Strawberry toast 🍓", lunch: "Cute Tamago rice bowl", dinner: "Creamy pasta" },
+                    "Tue": { breakfast: "Blueberry oatmeal", lunch: "Sushi rolls", dinner: "Cozy hot soup" },
+                    "Wed": { breakfast: "Pancakes", lunch: "—", dinner: "—" },
+                    "Thu": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Fri": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Sat": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Sun": { breakfast: "—", lunch: "—", dinner: "—" }
+                }
+            },
+            movies: [
+                { id: 1, title: "Howl's Moving Castle ✨", rating: "5", date: "2026-06-10" },
+                { id: 2, title: "The Secret World of Arrietty 🌿", rating: "4", date: "2026-06-19" }
+            ],
+            event: {
+                title: "Cozy Family Day Outing 🏕️",
+                date: "2026-06-28",
+                guests: [
+                    { id: 1, name: "Mama 🌸", rsvp: "Going" },
+                    { id: 2, name: "Papa 🧸", rsvp: "Going" },
+                    { id: 3, name: "Kakak 🎀", rsvp: "Going" },
+                    { id: 4, name: "Adik 👶", rsvp: "Pending" },
+                    { id: 5, name: "Cousin Sarah ✨", rsvp: "Tentative" }
+                ],
+                itinerary: [
+                    { id: 1, time: "08:00 AM", task: "Assemble & Cozy morning stretch 🧘‍♀️" },
+                    { id: 2, time: "10:30 AM", task: "Family Day Telematch Games! 🏆" },
+                    { id: 3, time: "01:00 PM", task: "Cozy Picnic under the Oak trees 🧺" },
+                    { id: 4, time: "06:00 PM", task: "BBQ Sunset dinner prep 🍗" },
+                    { id: 5, time: "08:30 PM", task: "Campfire songs & Stargazing ✨🏕️" }
+                ],
+                checklist: [
+                    { id: 1, text: "Prepare BBQ raw materials (strawberry chicken marinade!)", done: false },
+                    { id: 2, text: "Pack warm knit cardigans & picnic blankets", done: true },
+                    { id: 3, text: "Print custom family team jerseys 👕", done: false },
+                    { id: 4, text: "Charge Bluetooth speakers for music 🎵", done: true }
+                ]
+            },
+            
+            // Authentication database structure (defaults)
+            users: [
+                { username: "cozyowner", password: "123" } // Default login credential
+            ],
+            recoveryCodes: {},
+            isLocked: true // Defaults to lock screen on launch
+        };
+
+        let plannerData = JSON.parse(localStorage.getItem('my_sweet_planner_db_v5')) || defaultPlannerData;
+        
+        // Safety Fallback Checks
+        if (!plannerData.lang) plannerData.lang = "en";
+        if (!plannerData.event) plannerData.event = JSON.parse(JSON.stringify(defaultPlannerData.event));
+        if (!plannerData.currentTab) plannerData.currentTab = "dashboard";
+        if (!plannerData.monthlyNotes) plannerData.monthlyNotes = {};
+        if (!plannerData.savings) {
+            plannerData.savings = JSON.parse(JSON.stringify(defaultPlannerData.savings));
+        }
+        if (plannerData.isLocked === undefined) plannerData.isLocked = true;
+        if (!plannerData.users) plannerData.users = JSON.parse(JSON.stringify(defaultPlannerData.users));
+        if (!plannerData.recoveryCodes) plannerData.recoveryCodes = {};
+
+        // Apply new To Do parameters if missing
+        if (plannerData.todoGoals === undefined) plannerData.todoGoals = defaultPlannerData.todoGoals;
+        if (plannerData.todoPriorities === undefined) plannerData.todoPriorities = defaultPlannerData.todoPriorities;
+        if (plannerData.todoNotes === undefined) plannerData.todoNotes = defaultPlannerData.todoNotes;
+        if (plannerData.todoDate === undefined) plannerData.todoDate = defaultPlannerData.todoDate;
+
+        let soundOn = localStorage.getItem('soundOn') !== 'false';
+        let audioCtx = null;
+
+        function playFlipSound() {
+            if (!soundOn) return;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                
+                const duration = 0.35;
+                const sampleRate = audioCtx.sampleRate;
+                const bufferSize = sampleRate * duration;
+                const buffer = audioCtx.createBuffer(1, bufferSize, sampleRate);
+                const data = buffer.getChannelData(0);
+                
+                let lastOut = 0.0;
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    data[i] = (lastOut + (0.05 * white)) / 1.05;
+                    lastOut = data[i];
+                    data[i] *= 3.5;
+                }
+
+                const noise = audioCtx.createBufferSource();
+                noise.buffer = buffer;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'bandpass';
+                filter.frequency.setValueAtTime(1200, audioCtx.currentTime);
+                filter.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + duration);
+                filter.Q.setValueAtTime(1.8, audioCtx.currentTime);
+
+                const gainNode = audioCtx.createGain();
+                gainNode.gain.setValueAtTime(0.01, audioCtx.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 0.04);
+                gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+
+                noise.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                noise.start();
+            } catch(e) {
+                console.log("Audio awaiting gesture trigger.");
+            }
+        }
+
+        // Quick latch lock sound
+        function playLockSound() {
+            if (!soundOn) return;
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') audioCtx.resume();
+
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(180, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(80, audioCtx.currentTime + 0.15);
+                
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.15);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.15);
+            } catch(e) {}
+        }
+
+        let modalResolveCallback = null;
+
+        function showCustomConfirm(title, message) {
+            return new Promise((resolve) => {
+                document.getElementById('confirm-modal-title').innerText = title;
+                document.getElementById('confirm-modal-body').innerText = message;
+                document.getElementById('custom-confirm-modal').classList.remove('hidden');
+                modalResolveCallback = resolve;
+            });
+        }
+
+        function closeConfirmModal(result) {
+            document.getElementById('custom-confirm-modal').classList.add('hidden');
+            if (modalResolveCallback) {
+                modalResolveCallback(result);
+                modalResolveCallback = null;
+            }
+        }
+
+        function toggleAuthForm(formType) {
+            playFlipSound();
+            document.getElementById('cover-signin-form').classList.add('hidden');
+            document.getElementById('cover-signup-form').classList.add('hidden');
+            document.getElementById('cover-recovery-form').classList.add('hidden');
+
+            if (formType === 'signin') {
+                document.getElementById('cover-signin-form').classList.remove('hidden');
+            } else if (formType === 'signup') {
+                document.getElementById('cover-signup-form').classList.remove('hidden');
+            } else if (formType === 'recovery') {
+                document.getElementById('cover-recovery-form').classList.remove('hidden');
+            }
+        }
+
+        function handleSignIn() {
+            const userIn = document.getElementById('signin-username').value.trim();
+            const passIn = document.getElementById('signin-password').value;
+
+            if (!userIn || !passIn) {
+                showCustomConfirm("Oops! 🌸", "Please enter both your cozy username and password to proceed.");
+                return;
+            }
+
+            // Authenticate user check
+            const foundUser = plannerData.users.find(u => u.username.toLowerCase() === userIn.toLowerCase() && u.password === passIn);
+            if (foundUser) {
+                unlockPlannerBinder();
+            } else {
+                showCustomConfirm("Locked Latch! 🔒", "Incorrect username or password. Check your details or try recovering with a temporary access code.");
+            }
+        }
+
+        function handleSignUp() {
+            const userReg = document.getElementById('signup-username').value.trim();
+            const passReg = document.getElementById('signup-password').value;
+
+            if (!userReg || !passReg) {
+                showCustomConfirm("Missing detail 🌸", "Both username and password are required to register your secure binder cover profile.");
+                return;
+            }
+
+            // Avoid duplicates
+            const isTaken = plannerData.users.some(u => u.username.toLowerCase() === userReg.toLowerCase());
+            if (isTaken) {
+                showCustomConfirm("Owner Name Taken! 🧸", "This cozy owner name is already taken. Please choose another cute alias.");
+                return;
+            }
+
+            plannerData.users.push({ username: userReg, password: passReg });
+            saveToLocalStorage();
+            
+            showCustomConfirm("Registered! 🎉", "Your profile was saved successfully! You can now log in using your new details.");
+            toggleAuthForm('signin');
+            document.getElementById('signin-username').value = userReg;
+            document.getElementById('signin-password').value = passReg;
+        }
+
+        // Dynamic Temporary Key Generation Method
+        function requestTemporaryCode() {
+            playFlipSound();
+            const codes = ["SWEET-CAKE-492", "COZY-HONEY-810", "LOVELY-RIBBON-335", "CHERRY-PASTRY-112", "MATCHA-BLOOM-704", "TEA-PAW-990"];
+            const selected = codes[Math.floor(Math.random() * codes.length)];
+            
+            // Assign active recovery bypass key
+            plannerData.recoveryCodes[selected] = Date.now() + 600000; // valid for 10 minutes
+            saveToLocalStorage();
+
+            document.getElementById('recovery-code-display').innerText = selected;
+            document.getElementById('recovery-alert-modal').classList.remove('hidden');
+        }
+
+        function copyRecoveryKey() {
+            const textToCopy = document.getElementById('recovery-code-display').innerText;
+            
+            // Re-usable iframe safe copy execution
+            const tempInput = document.createElement("input");
+            tempInput.value = textToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            const copyBtn = document.getElementById('lbl-copy-btn');
+            copyBtn.innerText = "Copied! ✨";
+            setTimeout(() => { copyBtn.innerText = "Copy"; }, 2000);
+        }
+
+        function closeRecoveryAlert() {
+            document.getElementById('recovery-alert-modal').classList.add('hidden');
+            toggleAuthForm('recovery');
+            document.getElementById('recovery-code-input').value = document.getElementById('recovery-code-display').innerText;
+        }
+
+        function handleRecoveryLogin() {
+            const entered = document.getElementById('recovery-code-input').value.trim();
+            if (!entered) return;
+
+            const expiry = plannerData.recoveryCodes[entered];
+            if (expiry && Date.now() < expiry) {
+                // Remove bypass code so it can't be used twice
+                delete plannerData.recoveryCodes[entered];
+                saveToLocalStorage();
+                unlockPlannerBinder();
+            } else {
+                showCustomConfirm("Expired Key! 🔑", "This recovery key has expired or is invalid. Please request a fresh bypass key.");
+            }
+        }
+
+        // Simulated fingerprint biometric hold listener
+        let scanHoldTimeout = null;
+        function startBiometricScan(e) {
+            e.preventDefault();
+            if (scanHoldTimeout) return;
+
+            playLockSound();
+            const scanZone = document.getElementById('fingerprint-scan-zone');
+            scanZone.classList.add('scale-110');
+
+            // Fast-track bypass login holds down for 1.2 seconds
+            scanHoldTimeout = setTimeout(() => {
+                scanZone.classList.remove('scale-110');
+                scanHoldTimeout = null;
+                unlockPlannerBinder();
+            }, 1200);
+        }
+
+        function cancelBiometricScan() {
+            if (scanHoldTimeout) {
+                clearTimeout(scanHoldTimeout);
+                scanHoldTimeout = null;
+            }
+            document.getElementById('fingerprint-scan-zone').classList.remove('scale-110');
+        }
+
+        // Cancel on up/leave events
+        window.addEventListener('mouseup', cancelBiometricScan);
+        window.addEventListener('touchend', cancelBiometricScan);
+
+        let isPrintPreviewActive = false;
+
+        function togglePrintPreview(active) {
+            isPrintPreviewActive = active;
+            const body = document.body;
+            const previewHeader = document.getElementById('print-preview-header');
+            
+            if (active) {
+                body.classList.add('in-print-preview');
+                if (previewHeader) previewHeader.classList.remove('hidden');
+            } else {
+                body.classList.remove('in-print-preview');
+                if (previewHeader) previewHeader.classList.add('hidden');
+            }
+            
+            // Resize canvas to cleanly adjust coordinates for print resolution
+            const canvas = document.getElementById('canvas-main');
+            if (canvas) {
+                setTimeout(() => {
+                    initCanvasSize(canvas, 'drawing_tab_' + plannerData.currentTab);
+                }, 120);
+            }
+        }
+
+        function triggerNormalPrint() {
+            window.print();
+        }
+
+        function printPlanner() {
+            togglePrintPreview(true);
+        }
+
+        function unlockPlannerBinder() {
+            plannerData.isLocked = false;
+            saveToLocalStorage();
+            playFlipSound();
+
+            document.getElementById('book-cover-screen').classList.add('hidden');
+            document.getElementById('planner-header').classList.remove('hidden');
+            document.getElementById('planner-binder-frame').classList.remove('hidden');
+            document.getElementById('planner-footer').classList.remove('hidden');
+
+            const canvas = document.getElementById('canvas-main');
+            setTimeout(() => {
+                initCanvasSize(canvas, 'drawing_tab_' + plannerData.currentTab);
+            }, 150);
+        }
+
+        function lockPlannerBinder() {
+            plannerData.isLocked = true;
+            saveToLocalStorage();
+            playLockSound();
+
+            document.getElementById('book-cover-screen').classList.remove('hidden');
+            document.getElementById('planner-header').classList.add('hidden');
+            document.getElementById('planner-binder-frame').classList.add('hidden');
+            document.getElementById('planner-footer').classList.add('hidden');
+
+            // Clear credentials input slots
+            document.getElementById('signin-username').value = '';
+            document.getElementById('signin-password').value = '';
+            document.getElementById('signup-username').value = '';
+            document.getElementById('signup-password').value = '';
+            document.getElementById('recovery-code-input').value = '';
+            toggleAuthForm('signin');
+        }
+
+        async function openResetModal() {
+            const dict = translations[plannerData.lang || 'en'];
+            const confirmed = await showCustomConfirm(dict.wipe_data, dict.confirm_reset);
+            if (confirmed) {
+                plannerData = JSON.parse(JSON.stringify(defaultPlannerData));
+                saveToLocalStorage();
+                Object.keys(localStorage).forEach(k => {
+                    if (k.startsWith('drawing_tab_')) {
+                        localStorage.removeItem(k);
+                    }
+                });
+                location.reload();
+            }
+        }
+
+        async function openClearDrawingsModal() {
+            const dict = translations[plannerData.lang || 'en'];
+            const confirmed = await showCustomConfirm(dict.clear_handwritings, dict.confirm_clear_drawings);
+            if (confirmed) {
+                const canvas = document.getElementById('canvas-main');
+                const ctx = canvas.getContext('2d');
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                saveCanvasState(canvas, 'drawing_tab_' + plannerData.currentTab);
+                
+                historyData[plannerData.currentTab] = { undo: [canvas.toDataURL()], redo: [] };
+            }
+        }
+
+        function toggleLanguage() {
+            plannerData.lang = (plannerData.lang === "en") ? "ms" : "en";
+            saveToLocalStorage();
+            updateLanguageUI();
+        }
+
+        function updateLanguageUI() {
+            const lang = plannerData.lang || 'en';
+            const dict = translations[lang];
+
+            document.querySelectorAll('[data-t]').forEach(elem => {
+                const key = elem.getAttribute('data-t');
+                if (dict[key]) {
+                    elem.innerHTML = dict[key];
+                }
+            });
+
+            document.getElementById('lang-text').innerText = lang.toUpperCase();
+
+            const stylusStatus = document.getElementById('stylus-status-text');
+            if (stylusStatus) {
+                stylusStatus.innerText = stylusActive ? dict.stylus_on : dict.stylus_off;
+            }
+
+            document.getElementById('sticky-notepad').placeholder = dict.sticky_placeholder;
+            document.getElementById('todo-input-cute').placeholder = dict.todo_placeholder;
+            document.getElementById('budget-desc').placeholder = dict.budget_desc_placeholder;
+            document.getElementById('budget-amount').placeholder = dict.amount_placeholder;
+            document.getElementById('meal-breakfast').placeholder = dict.meal_breakfast_placeholder;
+            document.getElementById('meal-lunch').placeholder = dict.meal_lunch_placeholder;
+            document.getElementById('meal-dinner').placeholder = dict.meal_dinner_placeholder;
+            document.getElementById('movie-title').placeholder = dict.movie_title_placeholder;
+
+            // Cover elements
+            document.getElementById('signin-username').placeholder = lang === "en" ? "Username / ID" : "Nama Pengguna / ID";
+            document.getElementById('signin-password').placeholder = lang === "en" ? "Cozy Password" : "Kata Laluan Selesa";
+            document.getElementById('signup-username').placeholder = lang === "en" ? "New Username" : "Nama Pengguna Baru";
+            document.getElementById('signup-password').placeholder = lang === "en" ? "Secure Password" : "Kata Laluan Selamat";
+
+            renderCalendar();
+            renderTodos();
+            renderWeekly();
+            renderBudget();
+            renderMeals();
+            renderMovies();
+            renderEvent();
+            renderSavings();
+            
+            const adviceSpan = document.getElementById('cute-advice');
+            if (adviceSpan) {
+                adviceSpan.innerText = dict.advices[Math.floor(Math.random() * dict.advices.length)];
+            }
+        }
+
+        function toggleAudio() {
+            soundOn = !soundOn;
+            localStorage.setItem('soundOn', soundOn);
+            updateAudioButtonUI();
+        }
+
+        function updateAudioButtonUI() {
+            const btn = document.getElementById('audio-btn');
+            if (!btn) return;
+            if (soundOn) {
+                btn.innerHTML = `<i data-lucide="volume-2" class="w-4 h-4"></i>`;
+                btn.className = "text-sky-955/60 hover:text-sky-955 transition p-1";
+            } else {
+                btn.innerHTML = `<i data-lucide="volume-x" class="w-4 h-4 text-rose-400"></i>`;
+                btn.className = "text-rose-400/80 hover:text-rose-500 transition p-1";
+            }
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        }
+
+        function saveToLocalStorage() {
+            localStorage.setItem('my_sweet_planner_db_v5', JSON.stringify(plannerData));
+        }
+
+        function setMood(m) {
+            plannerData.mood = m;
+            document.getElementById('active-mood').innerText = m;
+            saveToLocalStorage();
+        }
+
+        function updateWater(val) {
+            plannerData.water = Math.max(0, (plannerData.water || 0) + val);
+            document.getElementById('water-count').innerText = plannerData.water;
+            saveToLocalStorage();
+        }
+
+        function saveStickyNote() {
+            plannerData.stickyNote = document.getElementById('sticky-notepad').value;
+            saveToLocalStorage();
+        }
+
+        function switchTab(targetId) {
+            playFlipSound();
+
+            const canvas = document.getElementById('canvas-main');
+            saveCanvasState(canvas, 'drawing_tab_' + plannerData.currentTab);
+
+            plannerData.currentTab = targetId;
+            saveToLocalStorage();
+
+            const pages = document.querySelectorAll('.planner-page');
+            pages.forEach(p => p.classList.add('hidden'));
+            document.getElementById(`page-${targetId}`).classList.remove('hidden');
+
+            const tabs = document.querySelectorAll('#planner-sidebar-tabs button');
+            tabs.forEach(t => {
+                t.classList.remove('tab-active', 'border-2', 'border-[#5C2C16]');
+                t.classList.add('border', 'border-sky-150/80');
+            });
+            
+            const activeTabButton = document.getElementById(`tab-${targetId}`);
+            activeTabButton.classList.add('tab-active', 'border-2', 'border-[#5C2C16]');
+            activeTabButton.classList.remove('border', 'border-sky-150/80');
+
+            if (targetId === 'dashboard') {
+                document.getElementById('sticky-notepad').value = plannerData.stickyNote || '';
+            } else if (targetId === 'monthly') {
+                renderCalendar();
+            } else if (targetId === 'todo') {
+                renderTodos();
+            } else if (targetId === 'weekly') {
+                renderWeekly();
+            } else if (targetId === 'budget') {
+                renderBudget();
+            } else if (targetId === 'savings') {
+                renderSavings();
+            } else if (targetId === 'meals') {
+                renderMeals();
+            } else if (targetId === 'movies') {
+                renderMovies();
+            } else if (targetId === 'event') {
+                renderEvent();
+            }
+
+            setTimeout(() => {
+                initCanvasSize(canvas, 'drawing_tab_' + targetId);
+            }, 30);
+
+            const dict = translations[plannerData.lang || 'en'];
+            document.getElementById('cute-advice').innerText = dict.advices[Math.floor(Math.random() * dict.advices.length)];
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendar-days-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            const currentMonthStr = plannerData.currentMonth || "2026-06";
+            document.getElementById('calendar-month-select').value = currentMonthStr;
+
+            if (!plannerData.monthlyNotes) plannerData.monthlyNotes = {};
+            document.getElementById('monthly-notes-textarea').value = plannerData.monthlyNotes[currentMonthStr] || '';
+
+            const year = parseInt(currentMonthStr.split("-")[0]);
+            const monthIdx = parseInt(currentMonthStr.split("-")[1]) - 1;
+
+            const firstDayDate = new Date(year, monthIdx, 1);
+            const totalDaysInMonth = new Date(year, monthIdx + 1, 0).getDate();
+            const paddingDays = firstDayDate.getDay();
+
+            for (let i = 0; i < paddingDays; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = "aspect-square rounded-lg bg-transparent";
+                grid.appendChild(emptyCell);
+            }
+
+            for (let day = 1; day <= totalDaysInMonth; day++) {
+                const monthStr = (monthIdx + 1) < 10 ? '0' + (monthIdx + 1) : (monthIdx + 1);
+                const dayStr = day < 10 ? '0' + day : day;
+                const dateKey = `${year}-${monthStr}-${dayStr}`;
+                const hasDiaryEntry = plannerData.diary[dateKey] && plannerData.diary[dateKey].trim() !== "";
+                
+                const dayBtn = document.createElement('button');
+                dayBtn.className = `aspect-square flex flex-col items-center justify-between p-1 rounded-xl border text-[10px] sm:text-xs font-cute transition-all relative ${
+                    plannerData.diaryDate === dateKey 
+                    ? 'bg-purple-100 border-purple-400 text-purple-955 font-bold scale-105 shadow-sm' 
+                    : 'bg-white border-purple-100/50 hover:bg-purple-50 text-sky-900 shadow-sm'
+                }`;
+                dayBtn.onclick = () => selectDiaryDate(dateKey);
+                
+                dayBtn.innerHTML = `
+                    <span class="text-[9px] sm:text-[10px]">${day}</span>
+                    ${hasDiaryEntry ? '<span class="text-[8px] sm:text-[9px] text-pink-400 transform scale-110 sm:scale-125">💖</span>' : '<span class="text-[8px] text-transparent">.</span>'}
+                `;
+                grid.appendChild(dayBtn);
+            }
+        }
+
+        function saveMonthlyNotes() {
+            const notesVal = document.getElementById('monthly-notes-textarea').value;
+            const activeMonth = plannerData.currentMonth || "2026-06";
+            if (!plannerData.monthlyNotes) {
+                plannerData.monthlyNotes = {};
+            }
+            plannerData.monthlyNotes[activeMonth] = notesVal;
+            saveToLocalStorage();
+        }
+
+        function changeCalendarMonth(value) {
+            plannerData.currentMonth = value;
+            saveToLocalStorage();
+            renderCalendar();
+        }
+
+        function selectDiaryDate(dateStr) {
+            plannerData.diaryDate = dateStr;
+            document.getElementById('diary-date-select').value = dateStr;
+            document.getElementById('diary-content').value = plannerData.diary[dateStr] || '';
+            saveToLocalStorage();
+            renderCalendar();
+        }
+
+        function changeDiaryDate(dateStr) {
+            const pickedMonth = dateStr.substring(0, 7);
+            plannerData.currentMonth = pickedMonth;
+            selectDiaryDate(dateStr);
+        }
+
+        function saveSelectedDiaryDay() {
+            const dateStr = plannerData.diaryDate;
+            const textVal = document.getElementById('diary-content').value;
+            if (textVal.trim() === "") {
+                delete plannerData.diary[dateStr];
+            } else {
+                plannerData.diary[dateStr] = textVal;
+            }
+            saveToLocalStorage();
+            renderCalendar();
+        }
+
+        function renderTodos() {
+            document.getElementById('todo-goals').value = plannerData.todoGoals || '';
+            document.getElementById('todo-priorities').value = plannerData.todoPriorities || '';
+            document.getElementById('todo-notes').value = plannerData.todoNotes || '';
+            document.getElementById('todo-custom-date').value = plannerData.todoDate || '2026-06-23';
+
+            const container = document.getElementById('todo-cute-list-container');
+            if (!container) return;
+            container.innerHTML = '';
+            const dict = translations[plannerData.lang || 'en'];
+
+            if (plannerData.todos.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-xs text-rose-400/50">${dict.relaxed_day}</div>`;
+                return;
+            }
+
+            plannerData.todos.forEach(todo => {
+                const row = document.createElement('div');
+                row.className = `flex items-center justify-between p-2 rounded-xl transition-all border border-dashed ${
+                    todo.done ? 'border-rose-200/50 opacity-60 bg-rose-50/10' : 'border-rose-200 bg-white'
+                }`;
+                
+                row.innerHTML = `
+                    <div class="flex items-center gap-3 max-w-[85%]">
+                        <button onclick="toggleTodo(${todo.id})" class="w-5 h-5 rounded-full border-2 border-rose-400 shrink-0 flex items-center justify-center transition-all ${
+                            todo.done ? 'bg-rose-500 shadow-inner' : 'bg-white hover:bg-rose-50'
+                        }">
+                            ${todo.done ? '<span class="text-[9px] text-white font-bold">✓</span>' : ''}
+                        </button>
+                        <span class="text-xs font-cute font-semibold text-rose-955 truncate ${todo.done ? 'line-through text-rose-300' : ''}">${todo.text}</span>
+                    </div>
+                    <button onclick="deleteTodo(${todo.id})" class="text-rose-300 hover:text-rose-600 transition p-1 no-print">
+                        <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                    </button>
+                `;
+                container.appendChild(row);
+            });
+            lucide.createIcons();
+        }
+
+        function addTodoItemCute() {
+            const input = document.getElementById('todo-input-cute');
+            const text = input.value.trim();
+            if (!text) return;
+            
+            plannerData.todos.push({
+                id: Date.now(),
+                text: text,
+                done: false,
+                date: plannerData.todoDate || new Date().toISOString().split('T')[0]
+            });
+            saveToLocalStorage();
+            input.value = '';
+            renderTodos();
+            playFlipSound();
+        }
+
+        function toggleTodo(id) {
+            const todo = plannerData.todos.find(t => t.id === id);
+            if (todo) {
+                todo.done = !todo.done;
+                saveToLocalStorage();
+                renderTodos();
+                playFlipSound();
+            }
+        }
+
+        function deleteTodo(id) {
+            plannerData.todos = plannerData.todos.filter(t => t.id !== id);
+            saveToLocalStorage();
+            renderTodos();
+            playFlipSound();
+        }
+
+        function saveTodoGoals() {
+            plannerData.todoGoals = document.getElementById('todo-goals').value;
+            saveToLocalStorage();
+        }
+
+        function saveTodoPriorities() {
+            plannerData.todoPriorities = document.getElementById('todo-priorities').value;
+            saveToLocalStorage();
+        }
+
+        function saveTodoNotes() {
+            plannerData.todoNotes = document.getElementById('todo-notes').value;
+            saveToLocalStorage();
+        }
+
+        function saveTodoDate(val) {
+            plannerData.todoDate = val;
+            saveToLocalStorage();
+        }
+
+        function renderWeekly() {
+            const daysContainer = document.getElementById('weekly-days-grid-container');
+            const habitsContainer = document.getElementById('weekly-habits-container');
+            if (!daysContainer || !habitsContainer) return;
+
+            const activeWeek = plannerData.weeklyWeek || "2026-06-22";
+            document.getElementById('weekly-week-select').value = activeWeek;
+
+            let weekMap = plannerData.weekly[activeWeek];
+            if (!weekMap || !weekMap.days) {
+                const legacyData = weekMap || {};
+                weekMap = {
+                    days: {
+                        "Mon": [{text: legacyData["Mon"] || "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}],
+                        "Tue": [{text: legacyData["Tue"] || "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}],
+                        "Wed": [{text: legacyData["Wed"] || "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}],
+                        "Thu": [{text: legacyData["Thu"] || "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}],
+                        "Fri": [{text: legacyData["Fri"] || "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}],
+                        "Sat": [{text: legacyData["Sat"] || "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}],
+                        "Sun": [{text: legacyData["Sun"] || "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}]
+                    },
+                    habits: [
+                        { name: "Drink Water 💧", done: [true, true, false, false, false, false, false] },
+                        { name: "Early Sleep 😴", done: [false, true, false, false, false, false, false] },
+                        { name: "Healthy Eat 🥞", done: [true, false, false, false, false, false, false] }
+                    ]
+                };
+                plannerData.weekly[activeWeek] = weekMap;
+                saveToLocalStorage();
+            }
+
+            // Habits Row Builder
+            habitsContainer.innerHTML = '';
+            weekMap.habits.forEach((habit, hIdx) => {
+                const habitRow = document.createElement('div');
+                habitRow.className = "flex items-center justify-between gap-2";
+                
+                let checkBubblesHtml = '';
+                for (let d = 0; d < 7; d++) {
+                    const checked = habit.done[d];
+                    checkBubblesHtml += `
+                        <button onclick="toggleWeeklyHabit(${hIdx}, ${d})" class="w-[14px] h-[14px] sm:w-4 sm:h-4 rounded-full border-2 border-[#5C2C16] flex items-center justify-center transition-all ${
+                            checked ? 'bg-[#F29492]' : 'bg-white'
+                        }" title="Toggle Day ${d+1}">
+                            ${checked ? '<span class="text-[7px] text-[#5C2C16] font-bold">✓</span>' : ''}
+                        </button>
+                    `;
+                }
+
+                habitRow.innerHTML = `
+                    <input type="text" value="${habit.name}" onchange="saveWeeklyHabitName(${hIdx}, this.value)" class="w-[45%] text-[10px] sm:text-xs font-cute font-bold text-[#5C2C16] bg-white border border-[#5C2C16] rounded-full px-2.5 py-0.5 outline-none focus:ring-1 focus:ring-[#F29492]" placeholder="Habit task...">
+                    <div class="flex gap-[4.5px] items-center w-[120px] justify-between">
+                        ${checkBubblesHtml}
+                    </div>
+                `;
+                habitsContainer.appendChild(habitRow);
+            });
+
+            // Days Double Box cards builder
+            daysContainer.innerHTML = '';
+            const daysList = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+            const fullDayNames = {
+                "Mon": "Monday", "Tue": "Tuesday", "Wed": "Wednesday", "Thu": "Thursday", 
+                "Fri": "Friday", "Sat": "Saturday", "Sun": "Sunday"
+            };
+
+            daysList.forEach((dayKey) => {
+                const tasks = weekMap.days[dayKey] || [{text: "", done: false}, {text: "", done: false}, {text: "", done: false}, {text: "", done: false}];
+                const card = document.createElement('div');
+                card.className = "relative pt-4";
+                
+                let checklistLinesHtml = '';
+                for (let t = 0; t < 4; t++) {
+                    const task = tasks[t] || {text: "", done: false};
+                    checklistLinesHtml += `
+                        <div class="flex items-center gap-2 border-b border-dashed border-[#5C2C16]/20 py-1 font-cute">
+                            <button onclick="toggleWeeklyTask('${dayKey}', ${t})" class="w-[15px] h-[15px] rounded-full border-2 border-[#5C2C16] shrink-0 flex items-center justify-center transition-all ${
+                                task.done ? 'bg-[#F29492]' : 'bg-white'
+                            }">
+                                ${task.done ? '<span class="text-[8px] text-[#5C2C16] font-bold">✓</span>' : ''}
+                            </button>
+                            <input type="text" value="${task.text}" onchange="saveWeeklyTaskText('${dayKey}', ${t}, this.value)" class="w-full bg-transparent text-[11px] sm:text-xs text-[#5C2C16] font-bold outline-none focus:text-black border-0 p-0 focus:ring-0 ${
+                                task.done ? 'line-through opacity-50' : ''
+                            }" placeholder="Add task detail...">
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="absolute inset-0 bg-[#F29492]/80 rounded-2xl transform translate-x-1.5 translate-y-1.5 border-2 border-[#5C2C16] z-0"></div>
+                    <div class="relative bg-white border-2 border-[#5C2C16] rounded-2xl p-3 sm:p-4 z-10 flex flex-col min-h-[145px]">
+                        <div class="absolute -top-3 left-4">
+                            <div class="absolute inset-0 bg-[#F29492]/85 rounded-lg transform translate-x-0.5 translate-y-0.5 border-2 border-[#5C2C16] z-0"></div>
+                            <div class="relative bg-white border-2 border-[#5C2C16] px-3.5 py-0.5 rounded-lg text-[10px] font-bold text-[#5C2C16] z-10 font-cute tracking-wide">
+                                ${fullDayNames[dayKey]}
+                            </div>
+                        </div>
+                        <div class="mt-3.5 space-y-1">
+                            ${checklistLinesHtml}
+                        </div>
+                    </div>
+                `;
+                daysContainer.appendChild(card);
+            });
+        }
+
+        function changeWeeklyWeek(value) {
+            plannerData.weeklyWeek = value;
+            saveToLocalStorage();
+            renderWeekly();
+        }
+
+        function toggleWeeklyTask(dayKey, index) {
+            const activeWeek = plannerData.weeklyWeek || "2026-06-22";
+            const weekMap = plannerData.weekly[activeWeek];
+            if (weekMap && weekMap.days[dayKey] && weekMap.days[dayKey][index]) {
+                weekMap.days[dayKey][index].done = !weekMap.days[dayKey][index].done;
+                saveToLocalStorage();
+                renderWeekly();
+            }
+        }
+
+        function saveWeeklyTaskText(dayKey, index, textVal) {
+            const activeWeek = plannerData.weeklyWeek || "2026-06-22";
+            const weekMap = plannerData.weekly[activeWeek];
+            if (weekMap && weekMap.days[dayKey] && weekMap.days[dayKey][index]) {
+                weekMap.days[dayKey][index].text = textVal;
+                saveToLocalStorage();
+            }
+        }
+
+        function toggleWeeklyHabit(hIdx, dIdx) {
+            const activeWeek = plannerData.weeklyWeek || "2026-06-22";
+            const weekMap = plannerData.weekly[activeWeek];
+            if (weekMap && weekMap.habits[hIdx]) {
+                weekMap.habits[hIdx].done[dIdx] = !weekMap.habits[hIdx].done[dIdx];
+                saveToLocalStorage();
+                renderWeekly();
+            }
+        }
+
+        function saveWeeklyHabitName(hIdx, nameVal) {
+            const activeWeek = plannerData.weeklyWeek || "2026-06-22";
+            const weekMap = plannerData.weekly[activeWeek];
+            if (weekMap && weekMap.habits[hIdx]) {
+                weekMap.habits[hIdx].name = nameVal;
+                saveToLocalStorage();
+            }
+        }
+
+        function renderBudget() {
+            const container = document.getElementById('budget-ledger-container');
+            if (!container) return;
+            container.innerHTML = '';
+            const dict = translations[plannerData.lang || 'en'];
+            
+            let incomeTotal = 0;
+            let expenseTotal = 0;
+
+            let incCash = 0, incOnline = 0;
+            let expCash = 0, expOnline = 0;
+
+            if (plannerData.budget.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-xs text-sky-955/30">${dict.clean_wallet}</div>`;
+            } else {
+                plannerData.budget.forEach(item => {
+                    const isCash = item.method === 'cash';
+
+                    if (item.type === 'income') {
+                        incomeTotal += item.amount;
+                        if (isCash) incCash += item.amount;
+                        else incOnline += item.amount;
+                    } else {
+                        expenseTotal += item.amount;
+                        if (isCash) expCash += item.amount;
+                        else expOnline += item.amount;
+                    }
+
+                    const card = document.createElement('div');
+                    card.className = "flex flex-col p-2 rounded-xl bg-white border border-sky-100 shadow-sm text-xs gap-1.5";
+                    const methodLabel = isCash ? dict.cash_opt : dict.online_opt;
+
+                    card.innerHTML = `
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2 max-w-[55%]">
+                                <span class="text-sm">${item.type === 'income' ? '🌸' : '🍰'}</span>
+                                <span class="font-medium text-[#5C2C16] truncate">${item.desc}</span>
+                            </div>
+                            <div class="flex items-center gap-1.5 shrink-0">
+                                <span class="text-[9px] font-bold px-1.5 py-0.5 rounded-md bg-sky-50 text-sky-700 border border-sky-100">${methodLabel}</span>
+                                <span class="font-cute font-bold ${item.type === 'income' ? 'text-emerald-600' : 'text-rose-500'}">
+                                    ${item.type === 'income' ? '+' : '-'}RM${item.amount.toFixed(2)}
+                                </span>
+                                <button onclick="deleteBudgetEntry(${item.id})" class="text-gray-300 hover:text-rose-400 transition p-1 no-print">
+                                    <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-1 bg-sky-50/60 p-1.5 rounded-lg justify-between">
+                            <span class="text-[9px] text-sky-800 font-bold">${dict.tx_date}</span>
+                            <input type="date" value="${item.date || ''}" onchange="updateBudgetDate(${item.id}, this.value)" class="text-[9px] font-cute px-1 py-0.5 border-0 bg-transparent focus:ring-0 max-w-[120px] cursor-pointer">
+                        </div>
+                    `;
+                    container.appendChild(card);
+                });
+            }
+
+            const netSavings = incomeTotal - expenseTotal;
+            const netCash = incCash - expCash;
+            const netOnline = incOnline - expOnline;
+
+            document.getElementById('budget-total-income').innerText = `RM${incomeTotal.toFixed(2)}`;
+            document.getElementById('budget-total-expenses').innerText = `RM${expenseTotal.toFixed(2)}`;
+            document.getElementById('budget-net-savings').innerText = `RM${netSavings.toFixed(2)}`;
+
+            document.getElementById('sub-inc-cash').innerText = `💵 Cash: RM${incCash.toFixed(2)}`;
+            document.getElementById('sub-inc-online').innerText = `📱 Online: RM${incOnline.toFixed(2)}`;
+
+            document.getElementById('sub-exp-cash').innerText = `💵 Cash: RM${expCash.toFixed(2)}`;
+            document.getElementById('sub-exp-online').innerText = `📱 Online: RM${expOnline.toFixed(2)}`;
+
+            document.getElementById('sub-sav-cash').innerText = `💵 Cash: RM${netCash.toFixed(2)}`;
+            document.getElementById('sub-sav-online').innerText = `📱 Online: RM${netOnline.toFixed(2)}`;
+
+            lucide.createIcons();
+        }
+
+        function addBudgetEntry() {
+            const desc = document.getElementById('budget-desc').value.trim();
+            const amount = parseFloat(document.getElementById('budget-amount').value);
+            const type = document.getElementById('budget-type').value;
+            const method = document.getElementById('budget-method').value;
+            const date = document.getElementById('budget-date-input').value;
+
+            if (!desc || isNaN(amount)) return;
+
+            plannerData.budget.push({
+                id: Date.now(),
+                desc,
+                amount,
+                type,
+                method,
+                date: date || new Date().toISOString().split('T')[0]
+            });
+            saveToLocalStorage();
+            document.getElementById('budget-desc').value = '';
+            document.getElementById('budget-amount').value = '';
+            renderBudget();
+        }
+
+        function updateBudgetDate(id, dateValue) {
+            const entry = plannerData.budget.find(item => item.id === id);
+            if (entry) {
+                entry.date = dateValue;
+                saveToLocalStorage();
+                renderBudget();
+            }
+        }
+
+        function deleteBudgetEntry(id) {
+            plannerData.budget = plannerData.budget.filter(item => item.id !== id);
+            saveToLocalStorage();
+            renderBudget();
+        }
+
+        function renderSavings() {
+            const container = document.getElementById('jar-stickers-container');
+            if (!container) return;
+            container.innerHTML = '';
+            const dict = translations[plannerData.lang || 'en'];
+            let totalValue = 0;
+
+            if (!plannerData.savings.stickers || plannerData.savings.stickers.length === 0) {
+                container.innerHTML = `
+                    <div class="absolute inset-x-4 top-1/3 text-center text-[10px] text-sky-955/30 font-medium px-2 leading-relaxed select-none pointer-events-none">
+                        ${dict.empty_jar_desc}
+                    </div>
+                `;
+            } else {
+                plannerData.savings.stickers.forEach(s => {
+                    totalValue += s.denom;
+                    let stickerClass = "";
+                    let stickerEmoji = "💖";
+
+                    switch(s.denom) {
+                        case 1:
+                            stickerClass = "bg-amber-100 text-amber-800 border border-amber-300 ring-2 ring-white/60";
+                            stickerEmoji = "💖";
+                            break;
+                        case 5:
+                            stickerClass = "bg-rose-100 text-rose-800 border border-rose-300 ring-2 ring-white/60";
+                            stickerEmoji = "🌸";
+                            break;
+                        case 10:
+                            stickerClass = "bg-sky-100 text-sky-800 border border-sky-300 ring-2 ring-white/60";
+                            stickerEmoji = "⭐";
+                            break;
+                        case 20:
+                            stickerClass = "bg-emerald-100 text-emerald-800 border border-emerald-300 ring-2 ring-white/60";
+                            stickerEmoji = "🍀";
+                            break;
+                        case 50:
+                            stickerClass = "bg-violet-100 text-violet-800 border border-violet-300 ring-2 ring-white/60";
+                            stickerEmoji = "🎀";
+                            break;
+                        case 100:
+                            stickerClass = "bg-amber-200 text-amber-950 border border-yellow-400 ring-2 ring-yellow-300 shadow-[0_2px_6px_rgba(251,191,36,0.4)]";
+                            stickerEmoji = "👑";
+                            break;
+                    }
+
+                    const element = document.createElement('div');
+                    element.className = `absolute cursor-pointer duration-150 hover:scale-115 active:scale-90 font-cute font-bold text-[9px] sm:text-[10px] px-1.5 py-0.5 rounded-full flex items-center gap-0.5 shadow-sm select-none animate-drop-cozy animate-bounce-short ${stickerClass}`;
+                    element.style.left = `${s.x}%`;
+                    element.style.bottom = `${s.y}%`;
+                    element.style.setProperty('--rot-deg', `${s.rot}deg`);
+                    element.style.transform = `rotate(${s.rot}deg)`;
+                    element.title = `RM${s.denom} - Click to pop!`;
+                    element.onclick = (e) => {
+                        e.stopPropagation();
+                        removeSavingsSticker(s.id);
+                    };
+
+                    element.innerHTML = `
+                        <span>${stickerEmoji}</span>
+                        <span>RM${s.denom}</span>
+                    `;
+                    container.appendChild(element);
+                });
+            }
+
+            document.getElementById('savings-jar-total-val').innerText = `RM${totalValue.toFixed(2)}`;
+        }
+
+        function addSavingsSticker(denom) {
+            const randomX = Math.floor(Math.random() * 62) + 12;
+            const randomY = Math.floor(Math.random() * 60) + 6;
+            const randomRotation = Math.floor(Math.random() * 60) - 30;
+
+            if (!plannerData.savings.stickers) {
+                plannerData.savings.stickers = [];
+            }
+
+            plannerData.savings.stickers.push({
+                id: Date.now() + Math.random(),
+                denom: denom,
+                x: randomX,
+                y: randomY,
+                rot: randomRotation
+            });
+
+            saveToLocalStorage();
+            renderSavings();
+            playFlipSound();
+        }
+
+        function removeSavingsSticker(id) {
+            plannerData.savings.stickers = plannerData.savings.stickers.filter(s => s.id !== id);
+            saveToLocalStorage();
+            renderSavings();
+            playFlipSound();
+        }
+
+        async function clearSavingsJar() {
+            const dict = translations[plannerData.lang || 'en'];
+            const confirmed = await showCustomConfirm(dict.clear_jar_btn, dict.confirm_reset);
+            if (confirmed) {
+                plannerData.savings.stickers = [];
+                saveToLocalStorage();
+                renderSavings();
+                playFlipSound();
+            }
+        }
+
+        function renderMeals() {
+            const container = document.getElementById('meals-week-grid');
+            if (!container) return;
+            container.innerHTML = '';
+            const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+
+            const activeWeek = plannerData.mealsWeek || "2026-06-22";
+            document.getElementById('meals-week-select').value = activeWeek;
+
+            if (!plannerData.meals[activeWeek]) {
+                plannerData.meals[activeWeek] = {
+                    "Mon": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Tue": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Wed": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Thu": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Fri": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Sat": { breakfast: "—", lunch: "—", dinner: "—" },
+                    "Sun": { breakfast: "—", lunch: "—", dinner: "—" }
+                };
+            }
+
+            const weekMap = plannerData.meals[activeWeek];
+            const weekDateObj = new Date(activeWeek);
+
+            days.forEach((day, index) => {
+                const plan = weekMap[day] || { breakfast: "—", lunch: "—", dinner: "—" };
+                const optionDate = new Date(weekDateObj);
+                optionDate.setDate(weekDateObj.getDate() + index);
+                const dateLabel = optionDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short' });
+
+                const div = document.createElement('div');
+                div.className = "bg-white p-2.5 rounded-xl border border-sky-100 shadow-sm text-xs space-y-1 flex flex-col justify-between";
+                div.innerHTML = `
+                    <div class="flex items-center justify-between border-b border-sky-50 pb-1 mb-1">
+                        <span class="font-cute font-bold text-[#5C2C16]">${day}</span>
+                        <span class="text-[9px] text-sky-400 font-bold">${dateLabel}</span>
+                    </div>
+                    <div class="text-[10px] text-sky-955/80 leading-tight">Breakfast: ${plan.breakfast}</div>
+                    <div class="text-[10px] text-sky-955/80 leading-tight">Lunch: ${plan.lunch}</div>
+                    <div class="text-[10px] text-sky-955/80 leading-tight">Dinner: ${plan.dinner}</div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function changeMealsWeek(value) {
+            plannerData.mealsWeek = value;
+            saveToLocalStorage();
+            renderMeals();
+        }
+
+        function saveMealPlan() {
+            const activeWeek = plannerData.mealsWeek || "2026-06-22";
+            const day = document.getElementById('meal-day-select').value;
+            const breakfast = document.getElementById('meal-breakfast').value.trim() || "—";
+            const lunch = document.getElementById('meal-lunch').value.trim() || "—";
+            const dinner = document.getElementById('meal-dinner').value.trim() || "—";
+
+            if (!plannerData.meals[activeWeek]) {
+                plannerData.meals[activeWeek] = {};
+            }
+            plannerData.meals[activeWeek][day] = { breakfast, lunch, dinner };
+            saveToLocalStorage();
+            renderMeals();
+            
+            document.getElementById('meal-breakfast').value = '';
+            document.getElementById('meal-lunch').value = '';
+            document.getElementById('meal-dinner').value = '';
+        }
+
+        function renderMovies() {
+            const container = document.getElementById('movies-container');
+            if (!container) return;
+            container.innerHTML = '';
+            const dict = translations[plannerData.lang || 'en'];
+
+            if (plannerData.movies.length === 0) {
+                container.innerHTML = `<div class="p-8 text-center text-xs text-sky-955/30 col-span-2">${dict.empty_cinema}</div>`;
+                return;
+            }
+
+            plannerData.movies.forEach(movie => {
+                let starCount = parseInt(movie.rating) || 5;
+                let starGlows = '⭐'.repeat(starCount);
+
+                const card = document.createElement('div');
+                card.className = "bg-white p-3 rounded-2xl border border-sky-100 flex flex-col justify-between shadow-sm relative gap-1.5";
+                card.innerHTML = `
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <span class="text-[9px] text-sky-400 font-bold">🎬 Review Log</span>
+                            <h3 class="text-xs font-bold text-[#5C2C16] leading-snug">${movie.title}</h3>
+                        </div>
+                        <button onclick="deleteMovie(${movie.id})" class="text-gray-300 hover:text-rose-500 transition p-1 no-print">
+                            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+                        </button>
+                    </div>
+                    <div class="text-[10px] font-bold text-amber-500 flex items-center gap-1">
+                        <span>Score:</span> <span>${starGlows}</span>
+                    </div>
+                    <div class="flex items-center gap-1 bg-sky-50/60 p-1.5 rounded-lg justify-between text-xs">
+                        <span class="text-[9px] text-sky-800 font-bold">${dict.watched_date}</span>
+                        <input type="date" value="${movie.date || ''}" onchange="updateMovieDate(${movie.id}, this.value)" class="text-[9px] font-cute px-1 py-0.5 border-0 bg-transparent focus:ring-0 max-w-[120px] cursor-pointer">
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        function addMovieItem() {
+            const title = document.getElementById('movie-title').value.trim();
+            const rating = document.getElementById('movie-rating').value;
+            const date = document.getElementById('movie-date-input').value;
+
+            if (!title) return;
+
+            plannerData.movies.push({
+                id: Date.now(),
+                title,
+                rating,
+                date: date || new Date().toISOString().split('T')[0]
+            });
+            saveToLocalStorage();
+            document.getElementById('movie-title').value = '';
+            renderMovies();
+        }
+
+        function updateMovieDate(id, dateValue) {
+            const movie = plannerData.movies.find(m => m.id === id);
+            if (movie) {
+                movie.date = dateValue;
+                saveToLocalStorage();
+            }
+        }
+
+        function deleteMovie(id) {
+            plannerData.movies = plannerData.movies.filter(m => m.id !== id);
+            saveToLocalStorage();
+            renderMovies();
+        }
+
+        function renderEvent() {
+            const dict = translations[plannerData.lang || 'en'];
+            const eventObj = plannerData.event;
+            if (!eventObj) return;
+
+            document.getElementById('event-active-label').innerText = eventObj.title;
+            document.getElementById('event-name-input').value = eventObj.title;
+            document.getElementById('event-date-input').value = eventObj.date;
+
+            const guestContainer = document.getElementById('event-guests-container');
+            guestContainer.innerHTML = '';
+            let goingCount = 0;
+            eventObj.guests.forEach(g => {
+                if (g.rsvp === "Going") goingCount++;
+                const rsvpColors = {
+                    "Going": "bg-emerald-100 text-emerald-800",
+                    "Pending": "bg-amber-100 text-amber-800",
+                    "Tentative": "bg-sky-100 text-sky-800",
+                    "No": "bg-rose-100 text-rose-800"
+                };
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between p-1 bg-sky-50/40 rounded-lg text-xs border border-sky-100/50";
+                div.innerHTML = `
+                    <span class="font-medium text-[#5C2C16] truncate max-w-[60%]">${g.name}</span>
+                    <div class="flex items-center gap-1 text-[10px]">
+                        <button onclick="toggleEventGuestRsvp(${g.id})" class="px-1.5 py-0.5 rounded-md font-bold ${rsvpColors[g.rsvp]} transition-all">${g.rsvp}</button>
+                        <button onclick="deleteEventGuest(${g.id})" class="text-gray-300 hover:text-rose-500 no-print">
+                            <i data-lucide="x" class="w-3 h-3"></i>
+                        </button>
+                    </div>
+                `;
+                guestContainer.appendChild(div);
+            });
+            document.getElementById('guest-rsvp-count').innerText = `${goingCount} Going / ${eventObj.guests.length} Total`;
+
+            const itinContainer = document.getElementById('event-itinerary-container');
+            itinContainer.innerHTML = '';
+            eventObj.itinerary.forEach(i => {
+                const div = document.createElement('div');
+                div.className = "flex items-start justify-between p-1.5 bg-rose-50/30 rounded-lg text-xs border border-rose-100/30";
+                div.innerHTML = `
+                    <div class="flex gap-2">
+                        <span class="font-cute font-bold text-rose-500 bg-white px-1.5 rounded border border-rose-100 shrink-0">${i.time}</span>
+                        <span class="text-[#5C2C16]">${i.task}</span>
+                    </div>
+                    <button onclick="deleteEventItinerary(${i.id})" class="text-gray-300 hover:text-rose-500 shrink-0 no-print">
+                        <i data-lucide="trash" class="w-3 h-3"></i>
+                    </button>
+                `;
+                itinContainer.appendChild(div);
+            });
+
+            const checkContainer = document.getElementById('event-checklist-container');
+            checkContainer.innerHTML = '';
+            let checkedCount = 0;
+            eventObj.checklist.forEach(c => {
+                if (c.done) checkedCount++;
+                const div = document.createElement('div');
+                div.className = `flex items-center justify-between p-1.5 rounded-lg border text-xs ${c.done ? 'bg-sky-50/40 border-sky-100/40 opacity-60' : 'bg-white border-pastelYellow-200 shadow-sm'}`;
+                div.innerHTML = `
+                    <div class="flex items-center gap-2 truncate max-w-[85%]">
+                        <input type="checkbox" ${c.done ? 'checked' : ''} onchange="toggleEventChecklist(${c.id})" class="w-3.5 h-3.5 text-pastelYellow-400 focus:ring-pastelYellow-300 rounded">
+                        <span class="${c.done ? 'line-through' : ''} text-[#5C2C16] truncate">${c.text}</span>
+                    </div>
+                    <button onclick="deleteEventChecklist(${c.id})" class="text-gray-300 hover:text-rose-400 no-print">
+                        <i data-lucide="x" class="w-3 h-3"></i>
+                    </button>
+                `;
+                checkContainer.appendChild(div);
+            });
+            document.getElementById('event-checklist-count').innerText = `Done: ${checkedCount} / ${eventObj.checklist.length}`;
+
+            lucide.createIcons();
+        }
+
+        function saveEventMeta() {
+            plannerData.event.title = document.getElementById('event-name-input').value.trim() || "My Sweet Event 🎉";
+            plannerData.event.date = document.getElementById('event-date-input').value;
+            saveToLocalStorage();
+            renderEvent();
+        }
+
+        function addEventGuest() {
+            const input = document.getElementById('event-guest-input');
+            const name = input.value.trim();
+            if (!name) return;
+            plannerData.event.guests.push({
+                id: Date.now(),
+                name,
+                rsvp: "Pending"
+            });
+            saveToLocalStorage();
+            input.value = '';
+            renderEvent();
+        }
+
+        function toggleEventGuestRsvp(id) {
+            const g = plannerData.event.guests.find(guest => guest.id === id);
+            if (g) {
+                const rsvps = ["Going", "Pending", "Tentative", "No"];
+                const nextIdx = (rsvps.indexOf(g.rsvp) + 1) % rsvps.length;
+                g.rsvp = rsvps[nextIdx];
+                saveToLocalStorage();
+                renderEvent();
+            }
+        }
+
+        function deleteEventGuest(id) {
+            plannerData.event.guests = plannerData.event.guests.filter(guest => guest.id !== id);
+            saveToLocalStorage();
+            renderEvent();
+        }
+
+        function addEventItinerary() {
+            const timeInput = document.getElementById('event-itinerary-time');
+            const descInput = document.getElementById('event-itinerary-desc');
+            const time = timeInput.value.trim() || "12:00 PM";
+            const task = descInput.value.trim();
+            if (!task) return;
+
+            plannerData.event.itinerary.push({
+                id: Date.now(),
+                time,
+                task
+            });
+            saveToLocalStorage();
+            timeInput.value = '';
+            descInput.value = '';
+            renderEvent();
+        }
+
+        function deleteEventItinerary(id) {
+            plannerData.event.itinerary = plannerData.event.itinerary.filter(i => i.id !== id);
+            saveToLocalStorage();
+            renderEvent();
+        }
+
+        function addEventChecklist() {
+            const input = document.getElementById('event-checklist-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            plannerData.event.checklist.push({
+                id: Date.now(),
+                text,
+                done: false
+            });
+            saveToLocalStorage();
+            input.value = '';
+            renderEvent();
+        }
+
+        function toggleEventChecklist(id) {
+            const c = plannerData.event.checklist.find(item => item.id === id);
+            if (c) {
+                c.done = !c.done;
+                saveToLocalStorage();
+                renderEvent();
+            }
+        }
+
+        function deleteEventChecklist(id) {
+            plannerData.event.checklist = plannerData.event.checklist.filter(item => item.id !== id);
+            saveToLocalStorage();
+            renderEvent();
+        }
+
+        let stylusActive = false;
+        let activeTool = 'pen';
+        let penColor = '#FDA4AF';
+        let penWidth = 5;
+        let historyData = {};
+
+        const canvasMain = document.getElementById('canvas-main');
+        let drawingState = { isDrawing: false, lastX: 0, lastY: 0 };
+
+        function toggleStylusMode() {
+            stylusActive = !stylusActive;
+            const toggleBtn = document.getElementById('stylus-toggle-btn');
+            const toolbar = document.getElementById('stylus-toolbar');
+            const dict = translations[plannerData.lang || 'en'];
+            
+            if (stylusActive) {
+                toggleBtn.innerHTML = `<span id="stylus-status-icon">🖋️</span> <span id="stylus-status-text">${dict.stylus_on}</span>`;
+                toggleBtn.className = "flex items-center gap-1 bg-sky-400 hover:bg-sky-500 text-white font-bold text-[10px] sm:text-xs py-1 px-2.5 rounded-lg border border-sky-500 transition shadow-md";
+                toolbar.classList.remove('hidden');
+                canvasMain.classList.remove('pointer-events-none');
+            } else {
+                toggleBtn.innerHTML = `<span id="stylus-status-icon">✏️</span> <span id="stylus-status-text">${dict.stylus_off}</span>`;
+                toggleBtn.className = "flex items-center gap-1 bg-pastelYellow-100 hover:bg-pastelYellow-200 text-[#5C2C16] font-bold text-[10px] sm:text-xs py-1 px-2.5 rounded-lg border border-pastelYellow-300 transition";
+                toolbar.classList.add('hidden');
+                canvasMain.classList.add('pointer-events-none');
+            }
+        }
+
+        function setPenColor(color) {
+            penColor = color;
+            const btns = ['strawberry', 'cloud', 'honey', 'charcoal'];
+            btns.forEach(b => {
+                const button = document.getElementById('color-' + b);
+                if (button) button.classList.remove('ring-2', 'ring-pastelPink-300');
+            });
+            let chosenBtnId = 'strawberry';
+            if (color === '#38BDF8') chosenBtnId = 'cloud';
+            else if (color === '#FACC15') chosenBtnId = 'honey';
+            else if (color === '#374151') chosenBtnId = 'charcoal';
+            
+            document.getElementById('color-' + chosenBtnId).classList.add('ring-2', 'ring-pastelPink-300');
+        }
+
+        function updatePenSize(val) {
+            penWidth = parseInt(val);
+            const slider = document.getElementById('pen-size-slider');
+            const display = document.getElementById('pen-size-display');
+            if (slider) slider.value = val;
+            if (display) display.innerText = val + '%';
+        }
+
+        function saveInitialState(canvas, tabId) {
+            if (!historyData[tabId]) {
+                historyData[tabId] = { undo: [], redo: [] };
+            }
+            historyData[tabId].undo = [canvas.toDataURL()];
+            historyData[tabId].redo = [];
+        }
+
+        function pushToHistory(tabId, dataUrl) {
+            if (!historyData[tabId]) {
+                historyData[tabId] = { undo: [], redo: [] };
+            }
+            historyData[tabId].undo.push(dataUrl);
+            if (historyData[tabId].undo.length > 30) {
+                historyData[tabId].undo.shift();
+            }
+            historyData[tabId].redo = [];
+        }
+
+        function undoStylus() {
+            const tabId = plannerData.currentTab;
+            const hist = historyData[tabId];
+            if (!hist || hist.undo.length <= 1) return;
+
+            const current = hist.undo.pop();
+            hist.redo.push(current);
+
+            const previousState = hist.undo[hist.undo.length - 1];
+            restoreCanvasFromDataUrl(previousState);
+        }
+
+        function redoStylus() {
+            const tabId = plannerData.currentTab;
+            const hist = historyData[tabId];
+            if (!hist || hist.redo.length === 0) return;
+
+            const next = hist.redo.pop();
+            hist.undo.push(next);
+            restoreCanvasFromDataUrl(next);
+        }
+
+        function restoreCanvasFromDataUrl(dataUrl) {
+            const ctx = canvasMain.getContext('2d');
+            ctx.clearRect(0, 0, canvasMain.width, canvasMain.height);
+            const img = new Image();
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, canvasMain.width, canvasMain.height);
+                saveCanvasState(canvasMain, 'drawing_tab_' + plannerData.currentTab);
+            };
+            img.src = dataUrl;
+        }
+
+        function setPenTool(tool) {
+            activeTool = tool;
+            const penBtn = document.getElementById('tool-pen-btn');
+            const eraserBtn = document.getElementById('tool-eraser-btn');
+            
+            if (tool === 'pen') {
+                penBtn.className = "px-2.5 py-0.5 font-bold rounded bg-sky-400 text-white flex items-center gap-1";
+                eraserBtn.className = "px-2.5 py-0.5 font-bold rounded hover:bg-sky-100 text-sky-955/70 flex items-center gap-1";
+            } else {
+                penBtn.className = "px-2.5 py-0.5 font-bold rounded hover:bg-sky-100 text-sky-955/70 flex items-center gap-1";
+                eraserBtn.className = "px-2.5 py-0.5 font-bold rounded bg-sky-400 text-white flex items-center gap-1";
+            }
+        }
+
+        function drawRoundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+
+        function drawMobileSwipeHintOnCanvas(canvas) {
+            if (window.innerWidth >= 768) return;
+
+            const ctx = canvas.getContext('2d');
+            ctx.save();
+            ctx.font = 'bold 9px "Fredoka", sans-serif';
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+            
+            const text = translations[plannerData.lang || 'en'].canvas_swipe_hint;
+            const textWidth = ctx.measureText(text).width;
+            
+            const x = canvas.width / 2;
+            const y = 22;
+
+            const paddingX = 8;
+            const paddingY = 4;
+            const rx = x - (textWidth / 2) - paddingX;
+            const ry = y - 9;
+            const rw = textWidth + (paddingX * 2);
+            const rh = 14 + paddingY;
+
+            ctx.fillStyle = 'rgba(255, 241, 242, 0.95)';
+            drawRoundRect(ctx, rx, ry, rw, rh, 6);
+            ctx.fill();
+
+            ctx.strokeStyle = '#FDA4AF';
+            ctx.lineWidth = 1;
+            ctx.setLineDash([3, 3]);
+            ctx.stroke();
+
+            ctx.fillStyle = '#BE123C';
+            ctx.fillText(text, x, y + 1);
+            ctx.restore();
+        }
+
+        function initCanvasSize(canvas, storageKey) {
+            const rect = canvas.parentElement.getBoundingClientRect();
+            if (rect.width === 0 || rect.height === 0) return;
+
+            canvas.width = rect.width;
+            canvas.height = rect.height;
+
+            const ctx = canvas.getContext('2d');
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+
+            const savedData = localStorage.getItem(storageKey);
+            if (savedData) {
+                const img = new Image();
+                img.onload = function() {
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    saveInitialState(canvas, plannerData.currentTab);
+                    drawMobileSwipeHintOnCanvas(canvas);
+                }
+                img.src = savedData;
+            } else {
+                saveInitialState(canvas, plannerData.currentTab);
+                drawMobileSwipeHintOnCanvas(canvas);
+            }
+        }
+
+        function saveCanvasState(canvas, storageKey) {
+            if (!storageKey) return;
+            const dataUrl = canvas.toDataURL();
+            localStorage.setItem(storageKey, dataUrl);
+        }
+
+        function getCanvasCoords(e, canvas) {
+            const rect = canvas.getBoundingClientRect();
+            if (e.touches && e.touches.length > 0) {
+                return {
+                    x: e.touches[0].clientX - rect.left,
+                    y: e.touches[0].clientY - rect.top
+                };
+            }
+            return {
+                x: e.clientX - rect.left,
+                y: e.clientY - rect.top
+            };
+        }
+
+        function bindDrawingListeners(canvas) {
+            const ctx = canvas.getContext('2d');
+
+            function startDrawing(e) {
+                if (!stylusActive) return;
+                e.preventDefault();
+                
+                const coords = getCanvasCoords(e, canvas);
+                drawingState.isDrawing = true;
+                drawingState.lastX = coords.x;
+                drawingState.lastY = coords.y;
+
+                ctx.beginPath();
+                ctx.moveTo(coords.x, coords.y);
+                
+                ctx.arc(coords.x, coords.y, penWidth / 2, 0, Math.PI * 2);
+                ctx.fillStyle = activeTool === 'eraser' ? '#FDFBF7' : penColor; 
+                ctx.globalCompositeOperation = 'source-over';
+                
+                ctx.fill();
+                ctx.beginPath();
+                ctx.moveTo(coords.x, coords.y);
+            }
+
+            function draw(e) {
+                if (!stylusActive || !drawingState.isDrawing) return;
+                e.preventDefault();
+                const coords = getCanvasCoords(e, canvas);
+
+                ctx.lineWidth = penWidth;
+                ctx.strokeStyle = activeTool === 'eraser' ? '#FDFBF7' : penColor;
+                ctx.globalCompositeOperation = 'source-over';
+
+                ctx.beginPath();
+                ctx.moveTo(drawingState.lastX, drawingState.lastY);
+                ctx.lineTo(coords.x, coords.y);
+                ctx.stroke();
+
+                drawingState.lastX = coords.x;
+                drawingState.lastY = coords.y;
+            }
+
+            function stopDrawing() {
+                if (!drawingState.isDrawing) return;
+                drawingState.isDrawing = false;
+                
+                const storageKey = 'drawing_tab_' + plannerData.currentTab;
+                saveCanvasState(canvas, storageKey);
+                pushToHistory(plannerData.currentTab, canvas.toDataURL());
+            }
+
+            canvas.addEventListener('mousedown', startDrawing);
+            canvas.addEventListener('mousemove', draw);
+            canvas.addEventListener('mouseup', stopDrawing);
+            canvas.addEventListener('mouseleave', stopDrawing);
+
+            canvas.addEventListener('touchstart', startDrawing);
+            canvas.addEventListener('touchmove', draw);
+            canvas.addEventListener('touchend', stopDrawing);
+        }
+
+        window.onload = function () {
+            const todayStr = new Date().toISOString().split('T')[0];
+            const currentMonthDefault = todayStr.substring(0, 7);
+
+            if (!plannerData.currentMonth) plannerData.currentMonth = currentMonthDefault;
+            if (!plannerData.diaryDate) plannerData.diaryDate = todayStr;
+            
+            const getMondayStr = (d) => {
+                d = new Date(d);
+                const day = d.getDay();
+                const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+                return new Date(d.setDate(diff)).toISOString().split('T')[0];
+            }
+            const thisMondayStr = getMondayStr(new Date());
+            
+            if (!plannerData.weeklyWeek) plannerData.weeklyWeek = thisMondayStr;
+            if (!plannerData.mealsWeek) plannerData.mealsWeek = thisMondayStr;
+
+            const dateDisplayOpt = { month: 'long', year: 'numeric' };
+            document.getElementById('current-date-span').innerText = new Date().toLocaleDateString('en-US', dateDisplayOpt);
+            document.getElementById('diary-date-select').value = plannerData.diaryDate;
+            document.getElementById('weekly-week-select').value = plannerData.weeklyWeek;
+            document.getElementById('meals-week-select').value = plannerData.mealsWeek;
+
+            document.getElementById('todo-custom-date').value = plannerData.todoDate || todayStr;
+            document.getElementById('budget-date-input').value = todayStr;
+            document.getElementById('movie-date-input').value = todayStr;
+
+            document.getElementById('active-mood').innerText = plannerData.mood || '😊';
+            document.getElementById('water-count').innerText = plannerData.water || 0;
+            document.getElementById('sticky-notepad').value = plannerData.stickyNote || '';
+            document.getElementById('diary-content').value = plannerData.diary[plannerData.diaryDate] || '';
+
+            bindDrawingListeners(canvasMain);
+            
+            // Render view state based on isLocked parameter
+            if (plannerData.isLocked) {
+                lockPlannerBinder();
+            } else {
+                unlockPlannerBinder();
+            }
+
+            updateLanguageUI();
+            updateAudioButtonUI();
+
+            setTimeout(() => {
+                initCanvasSize(canvasMain, 'drawing_tab_' + plannerData.currentTab);
+            }, 100);
+            
+            lucide.createIcons();
+        }
+
+        window.addEventListener('beforeprint', () => {
+            initCanvasSize(canvasMain, 'drawing_tab_' + plannerData.currentTab);
+        });
+
+        window.onresize = function() {
+            initCanvasSize(canvasMain, 'drawing_tab_' + plannerData.currentTab);
+        }
+
+        document.pointerdown = function() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            if (audioCtx && audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        };
+
+        function printPlanner() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
